@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+ 
+<body>
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- WELCOME PAGE (INDEX) -->
+<div data-role="page" id="one">
+	<div data-role="header">
+		<h1>FPL APP</h1>
+	</div><!-- /header -->
+ 
+	<div role="main" class="ui-content">
+		<h2>FPL APP</h2>
+		
+		Welcome! to our app!
+ 
+ 
+		<p><a href="#two" class="ui-btn ui-shadow ui-corner-all">Register</a></p>
+		<p><a href="#Three" class="ui-btn ui-shadow ui-corner-all">Login</a></p>	
+ 
+	</div><!-- /content -->
+ 
+	<div data-role="footer" data-theme="a">
+		<h4>Developed By Mark Aigbe</h4>
+	</div><!-- /footer -->
+</div><!-- /page one -->
+ 
+ 
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- REGISTER -->
+<div data-role="page" id="two" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>Register</h1>
+	</div><!-- /header -->
+ 
+	<div role="main" class="ui-content">
+		<h2>Register</h2>
+ 
+		    Username: <input type="text" id="regUsername" name="regUsername" class="text-basic" value="">
+ 
+			Password: <input type="password" id="regPassword" name="regPassword" class="text-basic" value="">
+ 
+            <button id="register" class="ui-btn">Sign Up</button>
+ 
+			<!-- <p>Already registered? login <a href="#three">here</a></p> -->
+			<p>Already registered? login <a href="#Three">here</a></p>
+			
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
+	</div><!-- /content -->
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page two -->
+ 
+ 
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- LOGIN -->
+<div data-role="page" id="Three" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>Login</h1>
+	</div><!-- /header -->
+ 
+	<div role="main" class="ui-content">
+		<h2>Three</h2>
+ 
+			Username: <input type="text" name="username" id="username" class="text-basic" value="">
+            Password <input type="password" name="password" id="password" class="text-basic" value="">
+ 
+            <button id = "login" class="ui-btn">Login</button>
+ 
+			<p>Havent registered? register <a href="#two">here</a></p>
+ 
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
+	</div><!-- /content -->
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page three -->
+ 
+ 
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- TEAMS PAGE !-->
+<div data-role="page" id="four" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>Teams</h1>
+	</div><!-- /header -->
+ 
+	<div role="main" class="ui-content">
+		<h2>Choose a team</h2>
+			<ol data-role="listview">
+				<li>team1</li><button id ="team1">Add 1</button>
+				<li>team2</li><button id ="team2">Add 1</button>
+				<li>team3</li><button id ="team3">Add 1</button>
+			</ol>
+ 
+	</div><!-- /content -->
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page four -->
+ 
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- MANAGER COOK CUSTOMER PAGES -->
+<!-- MANAGER -->
+<div data-role="page" id="admin" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>ADMIN</h1>
+ 
+	</div><!-- /header -->
+ 
+	<div role="main" class="ui-content">
+		<h2>ADMIN</h2>
+		
+		<p>The place to view all users/modify teams</p>
+		
+		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Teams</a></p>
+		<p><a href="#one" class="ui-btn ui-shadow ui-corner-all">Logout</a></p>		
+		
+	</div><!-- /content -->
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page manager -->
+ 
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- CUSTOMER -->
+<div data-role="page" id="customer" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>Multi-page</h1>
+	</div><!-- /header -->
+ 
+	<div role="main" class="ui-content">
+		<h2>Home</h2>
+ 
+		Welcome to our app!
+ 
+ 
+		<p>Main page for general user</p>
+ 
+		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Teams</a></p>
+		<p><a href="#six" class="ui-btn ui-shadow ui-corner-all">Tables</a></p>
+ 
+ 
+	</div><!-- /content -->
+	</div><!-- /footer -->
+</div><!-- /page customer -->
+ 
+ 
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- SCRIPTS -->
+ 
+<!-- REGISTER -->
+<script>
+	$("#register").click(function(e) {
+	console.log("clicked");
+ 
+	// get the username and the password
+	var un = $("#regUsername").val();
+	var pw = $("#regPassword").val();
+ 
+	// AJAX POST to the /register page 
+	$.post( "/register", { username: un, password: pw})
+	.done(function( data ) {
+		alert( "Data Loaded: " + data );
+ 
+		// redirect to the customer page.
+		window.location="/#customer";
+ 
+	});
+});
+</script>
+ 
+ 
+<!-- LOGIN -->
+<script>
+	$("#login").click(function(e) {
+		console.log("clicked");
+ 
+		// get the username and the password
+		var un = $("#username").val();
+		var pw = $("#password").val();
+ 
+		// AJAX POST to the /login page 
+		$.post( "/login", { username: un, password: pw })
+		.done(function( data ) {
+			alert( "Data Loaded: " + data );
+			
+			if(data.includes('customer')){
+			// redirect to the customer page.
+			window.location="/#customer";
+
+			}
+			
+			else if(data.includes('admin')){
+			window.location="/#admin";
+			}
+			
+			// basically refresh page if no login data
+			else{
+			window.location="/#login"; 
+			}
+		});
+	});
+</script>
+
+<!-- SELECT TEAM --> 
+<script>
+	$("#team1").click(function(){
+		alert("You clicked on team1");
+ 
+		//var html = $("#basket").html(html + '<br>' + "selected pepperoni");
+	});
+	$("#team2").click(function(){
+		alert("You clicked on team2");
+ 
+		//var html = $("#basket").html(html + '<br>' + "selected BBQ");
+	});
+	$("#team3").click(function(){
+		alert("You clicked on team3");
+ 
+		//var html = $("#basket").html(html + '<br>' + "selected New Yorker");
+	});
+</script>
+ 
+</body>
+</html>
