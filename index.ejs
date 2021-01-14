@@ -16,7 +16,7 @@
  
 	<div role="main" class="ui-content">
 		<h2>FPL APP</h2>
-		
+ 
 		Welcome! to our app!
  
  
@@ -26,7 +26,7 @@
 	</div><!-- /content -->
  
 	<div data-role="footer" data-theme="a">
-		<h4>Developed By Mark Aigbe</h4>
+		<h4>Developed By Mark Aigbe, Josh Capellan, Dylan Forman </h4>
 	</div><!-- /footer -->
 </div><!-- /page one -->
  
@@ -50,7 +50,7 @@
  
 			<!-- <p>Already registered? login <a href="#three">here</a></p> -->
 			<p>Already registered? login <a href="#Three">here</a></p>
-			
+ 
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
 	</div><!-- /content -->
  
@@ -88,52 +88,90 @@
  
  
 <!----------------------------------------------------------------------------------------------------------------------------->
-<!-- TEAMS PAGE !-->
+<!-- TEAM -->
 <div data-role="page" id="four" data-theme="a">
  
 	<div data-role="header">
-		<h1>Teams</h1>
+		<h1>Team</h1>
+ 
 	</div><!-- /header -->
  
 	<div role="main" class="ui-content">
-		<h2>Choose a team</h2>
-			<ol data-role="listview">
-				<li>team1</li><button id ="team1">Add 1</button>
-				<li>team2</li><button id ="team2">Add 1</button>
-				<li>team3</li><button id ="team3">Add 1</button>
-			</ol>
+		<h2>Create a team</h2>
  
+		GK <input type="text" id="gk"/>
+		RB <input type="text" id="rb"/>
+		CB <input type="text" id="cb1"/>
+		CB <input type="text" id="cb2"/>
+		LB<input type="text" id="lb"/>
+		RM <input type="text" id="rm"/>
+		CM <input type="text" id="cm1"/>
+		CM <input type="text" id="cm2"/>
+		LM <input type="text" id="lm"/>
+		ST<input type="text" id="st1"/>
+		ST<input type="text" id="st2"/>
+		<button id = "submitTeam"class="ui-btn">Submit Team</button>
+ 
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 	</div><!-- /content -->
  
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
-</div><!-- /page four -->
- 
+</div><!-- /page cook -->
+
 <!----------------------------------------------------------------------------------------------------------------------------->
-<!-- MANAGER COOK CUSTOMER PAGES -->
-<!-- MANAGER -->
-<div data-role="page" id="admin" data-theme="a">
+<!-- TABLES -->
+<div data-role="page" id="five" data-theme="a">
  
 	<div data-role="header">
-		<h1>ADMIN</h1>
+		<h1>Tables</h1>
  
 	</div><!-- /header -->
  
 	<div role="main" class="ui-content">
-		<h2>ADMIN</h2>
-		
-		<p>The place to view all users/modify teams</p>
-		
-		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Teams</a></p>
-		<p><a href="#one" class="ui-btn ui-shadow ui-corner-all">Logout</a></p>		
-		
+		<h2>Tables of Europes top 5 divisions</h2>
+ 
+ 
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 	</div><!-- /content -->
  
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
+</div><!-- /page cook -->
+
+ 
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!-- ADMIN CUSTOMER PAGES -->
+<!-- ADMIN -->
+<div data-role="page" id="manager" data-theme="a">
+ 
+	<div data-role="header">
+ 
+		<h1>Admin</h1>
+ 
+	</div><!-- /header -->
+ 
+	<div role="main" class="ui-content">
+		<h2>Admin</h2>
+    </div>
+		 <p>Show all teams</p>
+ 
+		<button onclick="getData()"> Get data </button>
+ 
+		<div id="managerData"> </div>
+ 
+		<p><a href="#one" class="ui-btn ui-shadow ui-corner-all">Logout</a></p>	
+ 
+	<div data-role="footer">
+ 
+		<h4>Page Footer</h4>
+ 
+	</div><!-- /footer -->
+ 
 </div><!-- /page manager -->
+ 
  
 <!----------------------------------------------------------------------------------------------------------------------------->
 <!-- CUSTOMER -->
@@ -151,9 +189,11 @@
  
 		<p>Main page for general user</p>
  
-		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Teams</a></p>
-		<p><a href="#six" class="ui-btn ui-shadow ui-corner-all">Tables</a></p>
+		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Create a team</a></p>
+		<p><a href="#five" class="ui-btn ui-shadow ui-corner-all">View Tables</a></p>
  
+ 
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
  
 	</div><!-- /content -->
 	</div><!-- /footer -->
@@ -198,17 +238,17 @@
 		$.post( "/login", { username: un, password: pw })
 		.done(function( data ) {
 			alert( "Data Loaded: " + data );
-			
+ 
 			if(data.includes('customer')){
 			// redirect to the customer page.
 			window.location="/#customer";
-
+ 
 			}
-			
+ 
 			else if(data.includes('admin')){
 			window.location="/#admin";
 			}
-			
+ 
 			// basically refresh page if no login data
 			else{
 			window.location="/#login"; 
@@ -216,24 +256,36 @@
 		});
 	});
 </script>
-
-<!-- SELECT TEAM --> 
+ 
+<!-- SUBMIT TEAM --> 
 <script>
-	$("#team1").click(function(){
-		alert("You clicked on team1");
+	$("#submitTeam").click(function(e) {
+	console.log("button clicked");
  
-		//var html = $("#basket").html(html + '<br>' + "selected pepperoni");
-	});
-	$("#team2").click(function(){
-		alert("You clicked on team2");
+	// get the team values
+	var gk = $("#gk").val();
+	var rb = $("#rb").val();
+	var cb1 = $("#cb1").val();
+	var cb2 = $("#cb2").val();		
+	var lb = $("#lb").val();
+	var rm = $("#rm").val();
+	var cm1 = $("#cm1").val();
+	var cm2 = $("#cm2").val();
+	var lm = $("#lm").val();
+	var st1 = $("#st1").val();
+	var st2 = $("#st2").val();
+	
  
-		//var html = $("#basket").html(html + '<br>' + "selected BBQ");
-	});
-	$("#team3").click(function(){
-		alert("You clicked on team3");
+	// AJAX POST to the /team page 
+	$.post("/teams", { gk: gk, rb: rb, cb1: cb1, cb2: cb2, lb: lb, rm: rm, cm1: cm1, cm2: cm2, lm: lm, st1: st1, st2: st2})
+	.done(function( data ) {
+		alert( "Data Loaded: " + data );
  
-		//var html = $("#basket").html(html + '<br>' + "selected New Yorker");
+		// redirect to the customer page.
+		window.location="/#customer";
+ 
 	});
+});
 </script>
  
 </body>

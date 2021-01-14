@@ -58,7 +58,7 @@ app.post('/register',function(req,res){
 
 	res.send("Hello there = " + regUsername + " Password: " + regPass);
 });
- 
+
 app.post('/login',function(req,res){
  
 	//get the username
@@ -98,6 +98,48 @@ app.post('/login',function(req,res){
 	});
     connection.end();
 });
+
+app.post('/teams',function(req,res){
+	//get the values of each position in the team
+	
+	var gk = req.body.gk;
+	var rb = req.body.rb;
+	var cb1 = req.body.cb1;
+	var cb2 = req.body.cb2;	
+	var lb = req.body.lb;
+	var rm = req.body.rm;
+	var cm1 = req.body.cm1;
+	var cm2 = req.body.cm2;
+	var lm = req.body.lm;
+	var st1 = req.body.st1;
+	var st2 = req.body.st2;
+ 
+	console.log("Team submitted");
+ 
+	// connect to the db
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      port : 3306,
+      database : 'mgp'
+ 
+    });
+ 
+	connection.connect()
+	var sql = "INSERT INTO `mgp`.`teams` ('gk', 'rb', 'cb1', 'cb2', 'lb', 'rm', 'cm1', 'cm2', 'lm', 'st1', 'st2') VALUES ('"+gk+"', '"+rb+"', '"+cb1+"', '"+cb2+"', '"+lb+"', '"+rm+"', '"+cm1+"', '"+cm2+"', '"+lm+"', '"+st1+"', '"+st2+"')";
+	connection.query(sql, function (err, rows, fields){
+		// ensuring to throw something wheter there's an error or not
+		if(err) throw err;
+ 
+		// confirms if working
+		console.log("Inserted new team!");
+	});
+
+	res.send("Team submitted!");
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
