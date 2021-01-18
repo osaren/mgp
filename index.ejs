@@ -99,17 +99,17 @@
 	<div role="main" class="ui-content">
 		<h2>Create a team</h2>
  
-		GK <input type="text" id="gk"/>
-		RB <input type="text" id="rb"/>
-		CB <input type="text" id="cb1"/>
-		CB <input type="text" id="cb2"/>
-		LB<input type="text" id="lb"/>
-		RM <input type="text" id="rm"/>
-		CM <input type="text" id="cm1"/>
-		CM <input type="text" id="cm2"/>
-		LM <input type="text" id="lm"/>
-		ST<input type="text" id="st1"/>
-		ST<input type="text" id="st2"/>
+		GK <input type="text" id="goal_keeper"/>
+		RB <input type="text" id="right_back"/>
+		CB <input type="text" id="center_back_1"/>
+		CB <input type="text" id="center_back_2"/>
+		LB<input type="text" id="left_back"/>
+		RM <input type="text" id="right_mid"/>
+		CM <input type="text" id="center_mid_1"/>
+		CM <input type="text" id="center_mid_2"/>
+		LM <input type="text" id="left_mid"/>
+		ST<input type="text" id="striker1"/>
+		ST<input type="text" id="striker2"/>
 		<button id = "submitTeam"class="ui-btn">Submit Team</button>
  
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
@@ -130,16 +130,95 @@
 	</div><!-- /header -->
  
 	<div role="main" class="ui-content">
-		<h2>Tables of Europes top 5 divisions</h2>
- 
- 
+		<h2>Tables</h2>
+		<p><a href="#seven" class="ui-btn ui-corner-all" onclick="getData_pl()">Premier League</a></p>	
+		<p><a href="#eight" class="ui-btn ui-corner-all" onclick="getData_liga()">La Liga</a></p>	
+		<p><a href="#nine" class="ui-btn ui-corner-all" onclick="getData_serie()">Serie A</a></p>
+		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
+	
 	</div><!-- /content -->
  
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page cook -->
+
+<div data-role="page" id="seven" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>Premier League</h1>
+	</div><!-- /header -->
+ 
+ 
+	<div role="main" class="ui-content">
+		<h2>Premier League</h2>
+ 
+		<br>
+		<div id ="prem_table">
+ 
+		</div>
+ 
+		<p><a href="#five" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
+ 
+	</div><!-- /content -->
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page seven -->
+
+
+
+<div data-role="page" id="eight" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>La Liga</h1>
+	</div><!-- /header -->
+ 
+ 
+	<div role="main" class="ui-content">
+		<h2>La Liga</h2>
+ 
+		<br>
+		<div id ="liga_table">
+ 
+		</div>
+ 
+		<p><a href="#five" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
+ 
+	</div><!-- /content -->
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page eight -->
+
+
+
+<div data-role="page" id="nine" data-theme="a">
+ 
+	<div data-role="header">
+		<h1>Serie A</h1>
+	</div><!-- /header -->
+ 
+ 
+	<div role="main" class="ui-content">
+		<h2>Serie A</h2>
+ 
+		<br>
+		<div id ="serie_table">
+ 
+		</div>
+ 
+		<p><a href="#five" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
+ 
+	</div><!-- /content -->
+ 
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page nine -->
 
  
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -260,24 +339,24 @@
 <!-- SUBMIT TEAM --> 
 <script>
 	$("#submitTeam").click(function(e) {
-	console.log("button clicked");
+	//console.log("button clicked");
  
 	// get the team values
-	var gk = $("#gk").val();
-	var rb = $("#rb").val();
-	var cb1 = $("#cb1").val();
-	var cb2 = $("#cb2").val();		
-	var lb = $("#lb").val();
-	var rm = $("#rm").val();
-	var cm1 = $("#cm1").val();
-	var cm2 = $("#cm2").val();
-	var lm = $("#lm").val();
-	var st1 = $("#st1").val();
-	var st2 = $("#st2").val();
-	
+	var goal_keeper = $("#goal_keeper").val();
+	var right_back = $("#right_back").val();
+	var center_back_1 = $("#center_back_1").val();
+	var center_back_2 = $("#center_back_2").val();		
+	var left_back = $("#left_back").val();
+	var right_mid = $("#right_mid").val();
+	var center_mid_1 = $("#center_mid_1").val();
+	var center_mid_2 = $("#center_mid_2").val();
+	var left_mid = $("#left_mid").val();
+	var striker1 = $("#striker1").val();
+	var striker2 = $("#striker2").val();
+
  
 	// AJAX POST to the /team page 
-	$.post("/teams", { gk: gk, rb: rb, cb1: cb1, cb2: cb2, lb: lb, rm: rm, cm1: cm1, cm2: cm2, lm: lm, st1: st1, st2: st2})
+	$.post("/teams", { gk: goal_keeper, rb: right_back, cb1: center_back_1, cb2: center_back_2, lb: left_back, rm: right_mid, cm1: center_mid_1, cm2: center_mid_2, lm: left_mid, st1: striker1, st2: striker2})
 	.done(function( data ) {
 		alert( "Data Loaded: " + data );
  
@@ -286,6 +365,46 @@
  
 	});
 });
+</script>
+
+<!-- SHOW TABLES -->
+<!-- PREM -->
+<script>
+function getData_pl(){
+     alert("button was clicked");
+ 
+     $.post( "/getData_pl", function( data ) {
+     // embed the data into the managerData div tag
+      $( "#prem_table" ).html( data );
+    });
+ 
+ }
+</script>
+
+<!-- LA LIGA -->
+<script>
+function getData_liga(){
+     alert("button was clicked");
+ 
+     $.post( "/getData_liga", function( data ) {
+     // embed the data into the managerData div tag
+      $( "#liga_table" ).html( data );
+    });
+ 
+ }
+</script>
+
+<!-- SERIE A -->
+<script>
+function getData_serie(){
+     alert("button was clicked");
+ 
+     $.post( "/getData_serie", function( data ) {
+     // embed the data into the managerData div tag
+      $( "#serie_table" ).html( data );
+    });
+ 
+ }
 </script>
  
 </body>
