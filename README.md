@@ -1,1 +1,1 @@
-# mgp
+# Our Major Group Project
