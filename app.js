@@ -102,19 +102,19 @@ app.post('/login',function(req,res){
 app.post('/teams',function(req,res){
 	//get the values of each position in the team
 	
-	var gk = req.body.gk;
-	var rb = req.body.rb;
-	var cb1 = req.body.cb1;
-	var cb2 = req.body.cb2;	
-	var lb = req.body.lb;
-	var rm = req.body.rm;
-	var cm1 = req.body.cm1;
-	var cm2 = req.body.cm2;
-	var lm = req.body.lm;
-	var st1 = req.body.st1;
-	var st2 = req.body.st2;
+	var goal_keeper = req.body.gk;
+	var right_back = req.body.rb;
+	var center_back_1 = req.body.cb1;
+	var center_back_2 = req.body.cb2;	
+	var left_back = req.body.lb;
+	var right_mid = req.body.rm;
+	var center_mid_1 = req.body.cm1;
+	var center_mid_2 = req.body.cm2;
+	var left_mid = req.body.lm;
+	var striker1 = req.body.st1;
+	var striker2 = req.body.st2;
  
-	console.log("Team submitted");
+	//console.log("Team = "+ gk + rb + cb1 + cb2 + lb + rm + cm1 + cm2 + lm + st1 + st2);
  
 	// connect to the db
     var mysql = require('mysql')
@@ -128,7 +128,8 @@ app.post('/teams',function(req,res){
     });
  
 	connection.connect()
-	var sql = "INSERT INTO `mgp`.`teams` ('gk', 'rb', 'cb1', 'cb2', 'lb', 'rm', 'cm1', 'cm2', 'lm', 'st1', 'st2') VALUES ('"+gk+"', '"+rb+"', '"+cb1+"', '"+cb2+"', '"+lb+"', '"+rm+"', '"+cm1+"', '"+cm2+"', '"+lm+"', '"+st1+"', '"+st2+"')";
+	var sql = "INSERT INTO `mgp`.`teams` (`gk`, `rb`, `cb1`, `cb2`, `lb`, `rm`, `cm1`, `cm2`, `lm`, `st1`, `st2`) VALUES ('"+goal_keeper+"', '"+right_back+"', '"+center_back_1+"', '"+center_back_2+"', '"+left_back+"', '"+right_mid+"', '"+center_mid_1+"', '"+center_mid_2+"', '"+left_mid+"', '"+striker1+"', '"+striker2+"')";;
+	
 	connection.query(sql, function (err, rows, fields){
 		// ensuring to throw something wheter there's an error or not
 		if(err) throw err;
@@ -140,6 +141,141 @@ app.post('/teams',function(req,res){
 	res.send("Team submitted!");
 });
 
+
+// ----- GET DATA PL
+app.post('/getData_pl',function(req,res){
+    // Connect to the database
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      port : 3306,
+      database : 'mgp'
+    });
+ 
+    connection.connect()
+ 
+    connection.query('SELECT * from premier_league', function (err, rows, fields) {
+      if (err) throw err
+      var output = '';
+      for(var i=0; i< rows.length; i++){
+ 
+           var pos = rows[i].Pos + '     '; 
+           var team = rows[i].Team + '     ';
+		   var pl = rows[i].Pl + '     '; 
+           var won = rows[i].W + '     ';
+		   var draw = rows[i].D + '     ';
+           var loss = rows[i].L + '     '; 
+		   var f = rows[i].F + '     '; 
+           var against = rows[i].A + '     ';
+		   var gd = rows[i].GD + '     ';
+		   var points = rows[i].Pts + '<br>';
+ 
+           output = output + pos + team + pl + won + draw + loss + f + against + gd + points;
+ 
+	       var row_table = rows[i].pos;
+ 
+           var pos_break = pos.split('-');
+ 
+      }
+      res.send(output);
+ 
+    })
+ 
+    connection.end()
+ 
+});
+
+// ----- GET DATA LA LIGA
+app.post('/getData_liga',function(req,res){
+    // Connect to the database
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      port : 3306,
+      database : 'mgp'
+    });
+ 
+    connection.connect()
+ 
+    connection.query('SELECT * from la_liga', function (err, rows, fields) {
+      if (err) throw err
+      var output = '';
+      for(var i=0; i< rows.length; i++){
+ 
+           var pos = rows[i].Pos + '     '; 
+           var team = rows[i].Team + '     ';
+		   var pl = rows[i].Pl + '     '; 
+           var won = rows[i].W + '     ';
+		   var draw = rows[i].D + '     ';
+           var loss = rows[i].L + '     '; 
+		   var f = rows[i].F + '     '; 
+           var against = rows[i].A + '     ';
+		   var gd = rows[i].GD + '     ';
+		   var points = rows[i].Pts + '<br>';
+ 
+           output = output + pos + team + pl + won + draw + loss + f + against + gd + points;
+ 
+	       var row_table = rows[i].pos;
+ 
+           var pos_break = pos.split('-');
+ 
+      }
+      res.send(output);
+ 
+    })
+ 
+    connection.end()
+ 
+});
+
+// ----- GET DATA SERIE A
+app.post('/getData_serie',function(req,res){
+    // Connect to the database
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      port : 3306,
+      database : 'mgp'
+    });
+ 
+    connection.connect()
+ 
+    connection.query('SELECT * from serie_a', function (err, rows, fields) {
+      if (err) throw err
+      var output = '';
+      for(var i=0; i< rows.length; i++){
+ 
+           var pos = rows[i].Pos + '     '; 
+           var team = rows[i].Team + '     ';
+		   var pl = rows[i].Pl + '     '; 
+           var won = rows[i].W + '     ';
+		   var draw = rows[i].D + '     ';
+           var loss = rows[i].L + '     '; 
+		   var f = rows[i].F + '     '; 
+           var against = rows[i].A + '     ';
+		   var gd = rows[i].GD + '     ';
+		   var points = rows[i].Pts + '<br>';
+ 
+           output = output + pos + team + pl + won + draw + loss + f + against + gd + points;
+ 
+	       var row_table = rows[i].pos;
+ 
+           var pos_break = pos.split('-');
+ 
+      }
+      res.send(output);
+ 
+    })
+ 
+    connection.end()
+ 
+});
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
