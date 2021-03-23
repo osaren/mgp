@@ -378,17 +378,112 @@ app.post('/getData_ligaPlayer',function(req,res){
       var output = '';
       for(var i=0; i< rows.length; i++){
 
-           var Player = rows[i].Player + '     ';
-           var Team = rows[i].Team + '     ';
-		   var Goals = rows[i].Goals + '     ';
-           var Shots = rows[i].Shots + '     ';
-		   var OnTarget = rows[i].OnTarget + '<br>';
+           var Rank = rows[i].Rank + '     ';
+           var Name = rows[i].Name + '     ';
+		   var GoalsGl = rows[i].GoalsGl + '     ';
+           var AssistA = rows[i].AssistA + '     ';
+		   var PlayedP = rows[i].PlayedP + '     ';
+		   var Goalsper90 = rows[i].Goalsper90 + '     ';
+		   var MinsperGoalMPG = rows[i].MinsperGoalMPG + '     ';
+		   var TotalShots = rows[i].TotalShots + '     ';
+		   var GoalConversion = rows[i].GoalConversion + '     ';
+		   var ShotAccuracy = rows[i].ShotAccuracy + '<br>';
 
-           output = output + Player + Team + Goals + Shots + OnTarget;
+           output = output + Rank + Name + GoalsGl + AssistA + PlayedP + Goalsper90 + MinsperGoalMPG + TotalShots + GoalConversion + ShotAccuracy;
 
-	       var row_table = rows[i].Player;
+	       var row_table = rows[i].Rank;
 
-           var Player_break = Player.split('-');
+           var Rank = Rank.split('-');
+
+      }
+      res.send(output);
+
+    })
+
+    connection.end()
+
+});
+
+// ----- GET PLAYER DATA PREMIER LEAGUE
+app.post('/getData_premPlayer',function(req,res){
+    // Connect to the database
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      port : 3309,
+      database : 'mgp'
+    });
+
+    connection.connect()
+
+    connection.query('SELECT * from premplayer', function (err, rows, fields) {
+      if (err) throw err
+      var output = '';
+      for(var i=0; i< rows.length; i++){
+
+           var Rank = rows[i].Rank + '     ';
+           var Name = rows[i].Name + '     ';
+		   var GoalsGl = rows[i].GoalsGl + '     ';
+           var AssistA = rows[i].AssistA + '     ';
+		   var PlayedP = rows[i].PlayedP + '     ';
+		   var Goalsper90 = rows[i].Goalsper90 + '     ';
+		   var MinsperGoalMPG = rows[i].MinsperGoalMPG + '     ';
+		   var TotalShots = rows[i].TotalShots + '     ';
+		   var GoalConversion = rows[i].GoalConversion + '     ';
+		   var ShotAccuracy = rows[i].ShotAccuracy + '<br>';
+
+           output = output + Rank + Name + GoalsGl + AssistA + PlayedP + Goalsper90 + MinsperGoalMPG + TotalShots + GoalConversion + ShotAccuracy;
+
+	       var row_table = rows[i].Rank;
+
+           var Rank = Rank.split('-');
+
+      }
+      res.send(output);
+
+    })
+
+    connection.end()
+
+});
+
+// ----- GET PLAYER DATA Serie A
+app.post('/getData_serieaPlayer',function(req,res){
+    // Connect to the database
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
+      host     : 'localhost',
+      user     : 'root',
+      password : '',
+      port : 3309,
+      database : 'mgp'
+    });
+
+    connection.connect()
+
+    connection.query('SELECT * from serieaplayer', function (err, rows, fields) {
+      if (err) throw err
+      var output = '';
+      for(var i=0; i< rows.length; i++){
+
+           var Rank = rows[i].Rank + '     ';
+           var Name = rows[i].Name + '     ';
+		   var GoalsGl = rows[i].GoalsGl + '     ';
+           var AssistA = rows[i].AssistA + '     ';
+		   var PlayedP = rows[i].PlayedP + '     ';
+		   var Goalsper90 = rows[i].Goalsper90 + '     ';
+		   var MinsperGoalMPG = rows[i].MinsperGoalMPG + '     ';
+		   var TotalShots = rows[i].TotalShots + '     ';
+		   var GoalConversion = rows[i].GoalConversion + '     ';
+		   var ShotAccuracy = rows[i].ShotAccuracy + '<br>';
+
+           output = output + Rank + Name + GoalsGl + AssistA + PlayedP + Goalsper90 + MinsperGoalMPG + TotalShots + GoalConversion + ShotAccuracy;
+
+	       var row_table = rows[i].Rank;
+
+           var Rank = Rank.split('-');
 
       }
       res.send(output);

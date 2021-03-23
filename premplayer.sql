@@ -17,8 +17,8 @@
 CREATE DATABASE IF NOT EXISTS `mgp` /*!40100 DEFAULT CHARACTER SET latin1 */;
 USE `mgp`;
 
--- Dumping structure for table mgp.laligaplayer
-CREATE TABLE IF NOT EXISTS `laligaplayer` (
+-- Dumping structure for table mgp.premplayer
+CREATE TABLE IF NOT EXISTS `premplayer` (
   `Rank` varchar(50) DEFAULT NULL,
   `Name` varchar(50) DEFAULT NULL,
   `GoalsGl` varchar(50) DEFAULT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `laligaplayer` (
   `TotalShots` varchar(50) DEFAULT NULL,
   `GoalConversion` varchar(50) DEFAULT NULL,
   `ShotAccuracy` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
 -- Data exporting was unselected.
 
