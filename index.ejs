@@ -274,6 +274,7 @@
 		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Create a team</a></p>
 		<p><a href="#five" class="ui-btn ui-shadow ui-corner-all">View Tables</a></p>
 		<p><a href="#forum" class="ui-btn ui-shadow ui-corner-all">Enter Forums</a></p>
+		<p><a href="#playersStat" class="ui-btn ui-shadow ui-corner-all">Enter Players Stats</a></p>
 
 
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
@@ -314,6 +315,104 @@
 	</div><!-- /content -->
 	</div><!-- /footer -->
 </div><!-- /page customer -->
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+
+<!-- Players Stat Page -->
+<div data-role="page" id="playersStat" data-theme="a">
+
+	<div data-role="header">
+		<h1>Players Stats</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<h2>Chose a league</h2>
+		<p><a href="#premPlayers" class="ui-btn ui-corner-all" onclick="getData_pl()">Premier League</a></p>
+		<p><a href="#ligaPlayers" class="ui-btn ui-corner-all" onclick="getData_ligaPlayer()">La Liga</a></p>
+		<p><a href="#seriePlayers" class="ui-btn ui-corner-all" onclick="getData_serie()">Serie A</a></p>
+		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
+		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
+
+	</div><!-- /content -->
+	</div><!-- /footer -->
+</div><!-- /page playersStat -->
+
+<div data-role="page" id="premPlayers" data-theme="a">
+
+	<div data-role="header">
+		<h1>Premier League</h1>
+	</div><!-- /header -->
+
+
+	<div role="main" class="ui-content">
+		<h2>Premier League</h2>
+
+		<br>
+		<div id ="prem_table">
+
+		</div>
+
+		<p><a href="#playersStat" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page seven -->
+
+
+
+<div data-role="page" id="ligaPlayers" data-theme="a">
+
+	<div data-role="header">
+		<h1>La Liga</h1>
+	</div><!-- /header -->
+
+
+	<div role="main" class="ui-content">
+		<h2>La Liga</h2>
+
+		<br>
+		<div id ="ligaPlayer_table">
+
+		</div>
+
+		<p><a href="#playersStat" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page eight -->
+
+
+
+<div data-role="page" id="seriePlayers" data-theme="a">
+
+	<div data-role="header">
+		<h1>Serie A</h1>
+	</div><!-- /header -->
+
+
+	<div role="main" class="ui-content">
+		<h2>Serie A</h2>
+
+		<br>
+		<div id ="serie_table">
+
+		</div>
+
+		<p><a href="#playersStat" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page nine -->
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -469,6 +568,19 @@ function getData_serie(){
 		});
 
 	}
+</script>
+
+<!-- LA LIGA Players-->
+<script>
+function getData_ligaPlayer(){
+     alert("button was clicked");
+
+     $.post( "/getData_ligaPlayer", function( data ) {
+     // embed the data into the managerData div tag
+      $( "#ligaPlayer_table" ).html( data );
+    });
+
+ }
 </script>
 
 </body>
