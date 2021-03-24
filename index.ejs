@@ -115,6 +115,7 @@
 		ST<select id="striker2"/></select>
 		<button id = "submitTeam"class="ui-btn">Submit Team</button>
 
+		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 	</div><!-- /content -->
 
@@ -157,7 +158,8 @@
 	<div role="main" class="ui-content">
 		<h2>Premier League</h2>
 
-		<br>
+		<h4> #|Team|Pl|W|D|L|F|A|GD|Pts </h4>
+
 		<div id ="prem_table">
 
 		</div>
@@ -182,8 +184,9 @@
 
 	<div role="main" class="ui-content">
 		<h2>La Liga</h2>
+		
+		<h4> #|Team|Pl|W|D|L|F|A|GD|Pts </h4>
 
-		<br>
 		<div id ="liga_table">
 
 		</div>
@@ -209,7 +212,8 @@
 	<div role="main" class="ui-content">
 		<h2>Serie A</h2>
 
-		<br>
+		<h4> #|Team|Pl|W|D|L|F|A|GD|Pts </h4>
+
 		<div id ="serie_table">
 
 		</div>
@@ -260,21 +264,22 @@
 <div data-role="page" id="customer" data-theme="a">
 
 	<div data-role="header">
-		<h1>Multi-page</h1>
+		<h1>User Page</h1>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
 		<h2>Home</h2>
 
-		Welcome to our app!
+		Welcome back!
 
 
-		<p>Main page for general user</p>
+		<br>
 
 		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Create a team</a></p>
-		<p><a href="#five" class="ui-btn ui-shadow ui-corner-all">View Tables</a></p>
-		<p><a href="#forum" class="ui-btn ui-shadow ui-corner-all">Enter Forums</a></p>
-		<p><a href="#playersStat" class="ui-btn ui-shadow ui-corner-all">Enter Players Stats</a></p>
+		<p><a href="#five" class="ui-btn ui-shadow ui-corner-all">View League Tables</a></p>
+		<p><a href="#playersStat" class="ui-btn ui-shadow ui-corner-all">View Top 25 Players Stats</a></p>
+		<p><a href="#forum" class="ui-btn ui-shadow ui-corner-all">Enter Discussion Forums</a></p>
+		
 
 
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
@@ -309,7 +314,7 @@
 			<button id = "submit" class="ui-btn">Submit</button>
 		</form>
 
-
+		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
 	</div><!-- /content -->
@@ -328,9 +333,9 @@
 
 	<div role="main" class="ui-content">
 		<h2>Chose a league</h2>
-		<p><a href="#premPlayers" class="ui-btn ui-corner-all" onclick="getData_pl()">Premier League</a></p>
+		<p><a href="#premPlayers" class="ui-btn ui-corner-all" onclick="getData_premPlayer()()">Premier League</a></p>
 		<p><a href="#ligaPlayers" class="ui-btn ui-corner-all" onclick="getData_ligaPlayer()">La Liga</a></p>
-		<p><a href="#seriePlayers" class="ui-btn ui-corner-all" onclick="getData_serie()">Serie A</a></p>
+		<p><a href="#seriePlayers" class="ui-btn ui-corner-all" onclick="getData_serieaPlayer()">Serie A</a></p>
 		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
@@ -341,15 +346,18 @@
 <div data-role="page" id="premPlayers" data-theme="a">
 
 	<div data-role="header">
-		<h1>Premier League</h1>
+		<h1>Premier League Top 25</h1>
 	</div><!-- /header -->
 
 
 	<div role="main" class="ui-content">
-		<h2>Premier League</h2>
+		<h2>Premier League Top 25</h2>
+	
+		<h4>Rank|Name|GoalsGL|AssistsA|PlayedP|Goals per 90|Mins per Goal|MPG|Total Shots|Goal Conversion|Shot Accuracy </h4>
 
+		
 		<br>
-		<div id ="prem_table">
+		<div id ="premPlayer_table">
 
 		</div>
 
@@ -367,12 +375,15 @@
 <div data-role="page" id="ligaPlayers" data-theme="a">
 
 	<div data-role="header">
-		<h1>La Liga</h1>
+		<h1>La Liga Top 25</h1>
 	</div><!-- /header -->
 
 
 	<div role="main" class="ui-content">
-		<h2>La Liga</h2>
+		<h2>La Liga Top 25</h2>
+		
+		<h4>Rank|Name|GoalsGL|AssistsA|PlayedP|Goals per 90|Mins per Goal|MPG|Total Shots|Goal Conversion|Shot Accuracy </h4>
+		
 
 		<br>
 		<div id ="ligaPlayer_table">
@@ -393,15 +404,18 @@
 <div data-role="page" id="seriePlayers" data-theme="a">
 
 	<div data-role="header">
-		<h1>Serie A</h1>
+		<h1>Serie A Top 25</h1>
 	</div><!-- /header -->
 
 
 	<div role="main" class="ui-content">
-		<h2>Serie A</h2>
+		<h2>Serie A Top 25</h2>
+		
+		<h4>Rank|Name|GoalsGL|AssistsA|PlayedP|Goals per 90|Mins per Goal|MPG|Total Shots|Goal Conversion|Shot Accuracy </h4>
+		
 
 		<br>
-		<div id ="serie_table">
+		<div id ="serieaPlayer_table">
 
 		</div>
 
@@ -578,6 +592,32 @@ function getData_ligaPlayer(){
      $.post( "/getData_ligaPlayer", function( data ) {
      // embed the data into the managerData div tag
       $( "#ligaPlayer_table" ).html( data );
+    });
+
+ }
+</script>
+
+<!-- PREMIER LEAGUE Players-->
+<script>
+function getData_premPlayer(){
+     alert("button was clicked");
+
+     $.post( "/getData_premPlayer", function( data ) {
+     // embed the data into the managerData div tag
+      $( "#premPlayer_table" ).html( data );
+    });
+
+ }
+</script>
+
+<!-- SERIE A Players-->
+<script>
+function getData_serieaPlayer(){
+     alert("button was clicked");
+
+     $.post( "/getData_serieaPlayer", function( data ) {
+     // embed the data into the managerData div tag
+      $( "#serieaPlayer_table" ).html( data );
     });
 
  }
