@@ -1,0 +1,28 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table{
+
+}
+table .Table_Header{
+  padding: 12px;
+  align-content: center;
+  border: 1px solid white;
+  text-align: left;
+  width: 10px;
+}
+
+#premPlayer_table{
+  margin-left: 2px;
+  word-spacing: 55px;
+  border: 1px solid white;
+  text-align: left;
+  width: 55rem;
+  white-space: nowrap;
+}
