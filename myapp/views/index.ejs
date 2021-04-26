@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" lang="">
 <head>
 
+	<title>mgp</title>
 	<link rel="stylesheet" href="stylesheets/themes/RED.min.css" />
 	<link rel="stylesheet" href="stylesheets/themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" href="./stylesheets/style.css">
+	<link rel="stylesheet" href="public/stylesheets/style.css">
 </head>
 
 <body>
@@ -45,9 +46,9 @@
 	<div role="main" class="ui-content">
 		<h2>Register</h2>
 
-		Username: <input type="text" id="regUsername" name="regUsername" class="text-basic" value="">
+		<label for="regUsername">Username:</label><input type="text" id="regUsername" name="regUsername" class="text-basic" value="">
 
-		Password: <input type="password" id="regPassword" name="regPassword" class="text-basic" value="">
+		<label for="regPassword">Password:</label><input type="password" id="regPassword" name="regPassword" class="text-basic" value="">
 
 		<button id="register" class="ui-btn">Sign Up</button>
 
@@ -74,8 +75,8 @@
 	<div role="main" class="ui-content">
 		<h2>Login</h2>
 
-		Username: <input type="text" name="username" id="username" class="text-basic" value="">
-		Password <input type="password" name="password" id="password" class="text-basic" value="">
+		<label for="username">Username:</label><input type="text" name="username" id="username" class="text-basic" value="">
+		<label for="password">Password</label><input type="password" name="password" id="password" class="text-basic" value="">
 
 		<button id = "login" class="ui-btn">Login</button>
 
@@ -113,9 +114,9 @@
 		<label>LM</label><div class="player_data" id="left_mid"> </div>
 		<label>ST</label><div class="player_data" id="striker1"> </div>
 		<label>ST</label><div class="player_data" id="striker2"> </div>
-		<button id = "submitTeam"class="ui-btn">Submit Team</button>
+		<button id = "submitTeam" class="ui-btn">Submit Team</button>
 
-		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
+		<p><a href="#customer" data-direction="reverse" class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 	</div><!-- /content -->
 
@@ -138,7 +139,7 @@
 		<p><a href="#seven" class="ui-btn ui-corner-all" onclick="getData_pl()">Premier League</a></p>
 		<p><a href="#eight" class="ui-btn ui-corner-all" onclick="getData_liga()">La Liga</a></p>
 		<p><a href="#nine" class="ui-btn ui-corner-all" onclick="getData_serie()">Serie A</a></p>
-		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
+		<p><a href="#customer" data-direction="reverse" class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
 	</div><!-- /content -->
@@ -286,15 +287,14 @@
 
 	</div><!-- /content -->
 </div><!-- /footer -->
-</div><!-- /page customer -->
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
-<!-- Fourms Page -->
+<!-- Forums Page -->
 <div data-role="page" id="forum" data-theme="a">
 
 	<div data-role="header">
-		<h1>Fourm page</h1>
+		<h1>Forum page</h1>
 	</div><!-- /header -->
 
 	<div role="main" class="ui-content">
@@ -306,20 +306,20 @@
 		<p>Please voice your opinions below</p>
 
 		<form>
-			<label> Enter name: <label><br>
-					<input type="text" id="fname" name="fname"><br>
-					<label> Enter text below: <label><br>
-							<textarea id="formtext" name="formtext" rows="4" cols="50">
-			</textarea>
-							<button id = "submit" class="ui-btn">Submit</button>
+			<label for="fname"> Enter name: </label><br>
+			<input type="text" id="fname" name="fname"><br>
+
+			<label for="formtext"> Enter text below: </label><br>
+			<textarea id="formtext" name="formtext" rows="4" cols="50"></textarea>
+
+			<button id = "submit" class="ui-btn">Submit</button>
 		</form>
 
-		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
+		<p><a href="#customer" data-direction="reverse" class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
 	</div><!-- /content -->
 </div><!-- /footer -->
-</div><!-- /page customer -->
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -333,15 +333,14 @@
 
 	<div role="main" class="ui-content">
 		<h2>Chose a league</h2>
-		<p><a href="#premPlayers" class="ui-btn ui-corner-all" onclick="getData_premPlayer()()">Premier League</a></p>
+		<p><a href="#premPlayers" class="ui-btn ui-corner-all" onclick="getData_premPlayer()">Premier League</a></p>
 		<p><a href="#ligaPlayers" class="ui-btn ui-corner-all" onclick="getData_ligaPlayer()">La Liga</a></p>
 		<p><a href="#seriePlayers" class="ui-btn ui-corner-all" onclick="getData_serieaPlayer()">Serie A</a></p>
-		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
+		<p><a href="#customer" data-direction="reverse" class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
 	</div><!-- /content -->
 </div><!-- /footer -->
-</div><!-- /page playersStat -->
 
 <div data-role="page" id="premPlayers" data-theme="a">
 
@@ -474,8 +473,8 @@
 		console.log("clicked");
 
 		// get the username and the password
-		var un = $("#regUsername").val();
-		var pw = $("#regPassword").val();
+		const un = $("#regUsername").val();
+		const pw = $("#regPassword").val();
 
 		// AJAX POST to the /register page
 		$.post( "/register", { username: un, password: pw})
@@ -496,8 +495,8 @@
 		console.log("clicked");
 
 		// get the username and the password
-		var un = $("#username").val();
-		var pw = $("#password").val();
+		const un = $("#username").val();
+		const pw = $("#password").val();
 
 		// AJAX POST to the /login page
 		$.post( "/login", { username: un, password: pw })
@@ -529,17 +528,17 @@
 		//console.log("button clicked");
 
 		// get the team values
-		var goal_keeper = $("#goal_keeper").val();
-		var right_back = $("#right_back").val();
-		var center_back_1 = $("#center_back_1").val();
-		var center_back_2 = $("#center_back_2").val();
-		var left_back = $("#left_back").val();
-		var right_mid = $("#right_mid").val();
-		var center_mid_1 = $("#center_mid_1").val();
-		var center_mid_2 = $("#center_mid_2").val();
-		var left_mid = $("#left_mid").val();
-		var striker1 = $("#striker1").val();
-		var striker2 = $("#striker2").val();
+		const goal_keeper = $("#goal_keeper").val();
+		const right_back = $("#right_back").val();
+		const center_back_1 = $("#center_back_1").val();
+		const center_back_2 = $("#center_back_2").val();
+		const left_back = $("#left_back").val();
+		const right_mid = $("#right_mid").val();
+		const center_mid_1 = $("#center_mid_1").val();
+		const center_mid_2 = $("#center_mid_2").val();
+		const left_mid = $("#left_mid").val();
+		const striker1 = $("#striker1").val();
+		const striker2 = $("#striker2").val();
 
 
 		// AJAX POST to the /team page
