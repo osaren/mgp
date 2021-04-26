@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/html">
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
 <head>
 
-	<link rel="stylesheet" href="themes/RED.min.css" />
-	<link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="stylesheets/themes/RED.min.css" />
+	<link rel="stylesheet" href="stylesheets/themes/jquery.mobile.icons.min.css" />
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+	<link rel="stylesheet" href="./stylesheets/style.css">
 </head>
 
 <body>
@@ -44,14 +45,14 @@
 	<div role="main" class="ui-content">
 		<h2>Register</h2>
 
-		    Username: <input type="text" id="regUsername" name="regUsername" class="text-basic" value="">
+		Username: <input type="text" id="regUsername" name="regUsername" class="text-basic" value="">
 
-			Password: <input type="password" id="regPassword" name="regPassword" class="text-basic" value="">
+		Password: <input type="password" id="regPassword" name="regPassword" class="text-basic" value="">
 
-            <button id="register" class="ui-btn">Sign Up</button>
+		<button id="register" class="ui-btn">Sign Up</button>
 
-			<!-- <p>Already registered? login <a href="#three">here</a></p> -->
-			<p>Already registered? login <a href="#Three">here</a></p>
+		<!-- <p>Already registered? login <a href="#three">here</a></p> -->
+		<p>Already registered? login <a href="#Three">here</a></p>
 
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
 	</div><!-- /content -->
@@ -73,12 +74,12 @@
 	<div role="main" class="ui-content">
 		<h2>Login</h2>
 
-			Username: <input type="text" name="username" id="username" class="text-basic" value="">
-            Password <input type="password" name="password" id="password" class="text-basic" value="">
+		Username: <input type="text" name="username" id="username" class="text-basic" value="">
+		Password <input type="password" name="password" id="password" class="text-basic" value="">
 
-            <button id = "login" class="ui-btn">Login</button>
+		<button id = "login" class="ui-btn">Login</button>
 
-			<p>Havent registered? register <a href="#two">here</a></p>
+		<p>Havent registered? register <a href="#two">here</a></p>
 
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
 	</div><!-- /content -->
@@ -101,18 +102,17 @@
 	<div role="main" class="ui-content">
 		<h2>Create a team</h2>
 
-		GK <select onclick="getData_players()" id="goal_keeper"/> <option class="player_data"></option> <option class="player_data"></option> <option></option></select>
-
-		RB <select id="right_back"/></select>
-		CB <select id="center_back_1"/></select>
-		CB <select id="center_back_2"/></select>
-		LB<select id="left_back"/></select>
-		RM <select id="right_mid"/></select>
-		CM <select id="center_mid_1"/></select>
-		CM <select id="center_mid_2"/></select>
-		LM <select id="left_mid"/></select>
-		ST<select id="striker1"/></select>
-		ST<select id="striker2"/></select>
+		<label>GK</label><div class="player_data" id="goal_keeper"> </div>
+		<label>RB</label><div class="player_data" id="right_back"> </div>
+		<label>CB</label><div class="player_data" id="center_back_1"> </div>
+		<label>CB</label><div class="player_data" id="center_back_2"> </div>
+		<label>LB</label><div class="player_data" id="left_back"> </div>
+		<label>RM</label><div class="player_data" id="right_mid"> </div>
+		<label>CM</label><div class="player_data" id="center_mid_1"> </div>
+		<label>CM</label><div class="player_data" id="center_mid_2"> </div>
+		<label>LM</label><div class="player_data" id="left_mid"> </div>
+		<label>ST</label><div class="player_data" id="striker1"> </div>
+		<label>ST</label><div class="player_data" id="striker2"> </div>
 		<button id = "submitTeam"class="ui-btn">Submit Team</button>
 
 		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
@@ -184,7 +184,7 @@
 
 	<div role="main" class="ui-content">
 		<h2>La Liga</h2>
-		
+
 		<h4> #|Team|Pl|W|D|L|F|A|GD|Pts </h4>
 
 		<div id ="liga_table">
@@ -241,14 +241,14 @@
 
 	<div role="main" class="ui-content">
 		<h2>Admin</h2>
-    </div>
-		 <p>Show all teams</p>
+	</div>
+	<p>Show all teams</p>
 
-		<button onclick="getData_admin()"> Get data </button>
+	<button onclick="getData_admin()"> Get data </button>
 
-		<div id="admin_data"> </div>
+	<div id="admin_data"> </div>
 
-		<p><a href="#one" class="ui-btn ui-shadow ui-corner-all">Logout</a></p>
+	<p><a href="#one" class="ui-btn ui-shadow ui-corner-all">Logout</a></p>
 
 	<div data-role="footer">
 
@@ -279,13 +279,13 @@
 		<p><a href="#five" class="ui-btn ui-shadow ui-corner-all">View League Tables</a></p>
 		<p><a href="#playersStat" class="ui-btn ui-shadow ui-corner-all">View Top 25 Players Stats</a></p>
 		<p><a href="#forum" class="ui-btn ui-shadow ui-corner-all">Enter Discussion Forums</a></p>
-		
+
 
 
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
 	</div><!-- /content -->
-	</div><!-- /footer -->
+</div><!-- /footer -->
 </div><!-- /page customer -->
 
 
@@ -306,19 +306,19 @@
 		<p>Please voice your opinions below</p>
 
 		<form>
-		  <label> Enter name: <label><br>
-		  <input type="text" id="fname" name="fname"><br>
-		  <label> Enter text below: <label><br>
-			<textarea id="formtext" name="formtext" rows="4" cols="50">
+			<label> Enter name: <label><br>
+					<input type="text" id="fname" name="fname"><br>
+					<label> Enter text below: <label><br>
+							<textarea id="formtext" name="formtext" rows="4" cols="50">
 			</textarea>
-			<button id = "submit" class="ui-btn">Submit</button>
+							<button id = "submit" class="ui-btn">Submit</button>
 		</form>
 
 		<p><a href="#customer" data-direction="reverse"class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
 	</div><!-- /content -->
-	</div><!-- /footer -->
+</div><!-- /footer -->
 </div><!-- /page customer -->
 
 
@@ -340,7 +340,7 @@
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
 
 	</div><!-- /content -->
-	</div><!-- /footer -->
+</div><!-- /footer -->
 </div><!-- /page playersStat -->
 
 <div data-role="page" id="premPlayers" data-theme="a">
@@ -352,14 +352,28 @@
 
 	<div role="main" class="ui-content">
 		<h2>Premier League Top 25</h2>
-	
-		<h4>Rank|Name|GoalsGL|AssistsA|PlayedP|Goals per 90|Mins per Goal|MPG|Total Shots|Goal Conversion|Shot Accuracy </h4>
 
-		
-		<br>
-		<div id ="premPlayer_table">
+		<table>
+			<tr>
+				<th class="Table_Header">Rank</th>
+				<th class="Table_Header">Name</th>
+				<th class="Table_Header">Goals (GL)</th>
+				<th class="Table_Header">Assists (A)</th>
+				<th class="Table_Header">Played (P)</th>
+				<th class="Table_Header">Goals per 90</th>
+				<th class="Table_Header">Mins per Goal</th>
+				<th class="Table_Header">MPG</th>
+				<th class="Table_Header">Total Shots</th>
+				<th class="Table_Header">MPG</th>
+				<th class="Table_Header">Goal Conversion</th>
+				<th class="Table_Header">Shot Accuracy</th>
+			</tr>
 
-		</div>
+		</table>
+
+		<table>
+			<div id ="premPlayer_table"></div>
+		</table>
 
 		<p><a href="#playersStat" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
 
@@ -381,9 +395,9 @@
 
 	<div role="main" class="ui-content">
 		<h2>La Liga Top 25</h2>
-		
+
 		<h4>Rank|Name|GoalsGL|AssistsA|PlayedP|Goals per 90|Mins per Goal|MPG|Total Shots|Goal Conversion|Shot Accuracy </h4>
-		
+
 
 		<br>
 		<div id ="ligaPlayer_table">
@@ -410,9 +424,9 @@
 
 	<div role="main" class="ui-content">
 		<h2>Serie A Top 25</h2>
-		
+
 		<h4>Rank|Name|GoalsGL|AssistsA|PlayedP|Goals per 90|Mins per Goal|MPG|Total Shots|Goal Conversion|Shot Accuracy </h4>
-		
+
 
 		<br>
 		<div id ="serieaPlayer_table">
@@ -429,29 +443,50 @@
 </div><!-- /page nine -->
 
 
-<!----------------------------------------------------------------------------------------------------------------------------->
+<div data-role="page" id="test">
 
-<!-- SCRIPTS -->
+	<div data-role="header">
+		<h1>Page Title</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>Page content goes here.</p>
+
+
+
+		<div class="player_data"> </div>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------SCRIPTS------------------------------------------------------------------>
+<!----------------------------------------------------------------------------------------------------------------------------->
 
 <!-- REGISTER -->
 <script>
 	$("#register").click(function(e) {
-	console.log("clicked");
+		console.log("clicked");
 
-	// get the username and the password
-	var un = $("#regUsername").val();
-	var pw = $("#regPassword").val();
+		// get the username and the password
+		var un = $("#regUsername").val();
+		var pw = $("#regPassword").val();
 
-	// AJAX POST to the /register page
-	$.post( "/register", { username: un, password: pw})
-	.done(function( data ) {
-		alert( "Data Loaded: " + data );
+		// AJAX POST to the /register page
+		$.post( "/register", { username: un, password: pw})
+				.done(function( data ) {
+					alert( "Data Loaded: " + data );
 
-		// redirect to the customer page.
-		window.location="/#customer";
+					// redirect to the customer page.
+					window.location="/#customer";
 
+				});
 	});
-});
 </script>
 
 
@@ -466,161 +501,156 @@
 
 		// AJAX POST to the /login page
 		$.post( "/login", { username: un, password: pw })
-		.done(function( data ) {
-			alert( "Data Loaded: " + data );
+				.done(function( data ) {
+					alert( "Data Loaded: " + data );
 
-			if(data.includes('customer')){
-			// redirect to the customer page.
-			window.location="/#customer";
+					if(data.includes('customer')){
+						// redirect to the customer page.
+						window.location="/#customer";
 
-			}
+					}
 
-			else if(data.includes('admin')){
-			window.location="/#admin";
-			}
+					else if(data.includes('admin')){
+						window.location="/#admin";
+					}
 
-			// basically refresh page if no login data
-			else{
-				window.location="/#login";
-				console.log("LOGIN FAILED");
-			}
-		});
+					// basically refresh page if no login data
+					else{
+						window.location="/#login";
+						console.log("LOGIN FAILED");
+					}
+				});
 	});
 </script>
 
 <!-- SUBMIT TEAM -->
 <script>
 	$("#submitTeam").click(function(e) {
-	//console.log("button clicked");
+		//console.log("button clicked");
 
-	// get the team values
-	var goal_keeper = $("#goal_keeper").val();
-	var right_back = $("#right_back").val();
-	var center_back_1 = $("#center_back_1").val();
-	var center_back_2 = $("#center_back_2").val();
-	var left_back = $("#left_back").val();
-	var right_mid = $("#right_mid").val();
-	var center_mid_1 = $("#center_mid_1").val();
-	var center_mid_2 = $("#center_mid_2").val();
-	var left_mid = $("#left_mid").val();
-	var striker1 = $("#striker1").val();
-	var striker2 = $("#striker2").val();
+		// get the team values
+		var goal_keeper = $("#goal_keeper").val();
+		var right_back = $("#right_back").val();
+		var center_back_1 = $("#center_back_1").val();
+		var center_back_2 = $("#center_back_2").val();
+		var left_back = $("#left_back").val();
+		var right_mid = $("#right_mid").val();
+		var center_mid_1 = $("#center_mid_1").val();
+		var center_mid_2 = $("#center_mid_2").val();
+		var left_mid = $("#left_mid").val();
+		var striker1 = $("#striker1").val();
+		var striker2 = $("#striker2").val();
 
 
-	// AJAX POST to the /team page
-	$.post("/teams", { gk: goal_keeper, rb: right_back, cb1: center_back_1, cb2: center_back_2, lb: left_back, rm: right_mid, cm1: center_mid_1, cm2: center_mid_2, lm: left_mid, st1: striker1, st2: striker2})
-	.done(function( data ) {
-		alert( "Data Loaded: " + data );
-
-		// redirect to the customer page.
-		window.location="/#customer";
-
+		// AJAX POST to the /team page
+		$.post("/teams", { gk: goal_keeper, rb: right_back, cb1: center_back_1, cb2: center_back_2, lb: left_back, rm: right_mid, cm1: center_mid_1, cm2: center_mid_2, lm: left_mid, st1: striker1, st2: striker2})
+				.done(function( data ) {
+					alert( "Data Loaded: " + data );
+					// redirect to the customer page.
+					window.location="/#customer";
+				});
 	});
-});
 </script>
 
 <!-- SHOW TABLES -->
 <!-- ADMIN -->
 <script>
-function getData_admin(){
-     alert("button was clicked");
+	function getData_admin(){
+		alert("button was clicked");
 
-     $.post( "/getData_admin", function( data ) {
-     // embed the data into the managerData div tag
-      $( "#admin_data" ).html( data );
-    });
-
- }
-</script>
-
-<!-- PREM -->
-<script>
-function getData_pl(){
-     alert("button was clicked");
-
-     $.post( "/getData_pl", function( data ) {
-     // embed the data into the managerData div tag
-      $( "#prem_table" ).html( data );
-    });
-
- }
-</script>
-
-<!-- LA LIGA -->
-<script>
-function getData_liga(){
-     alert("button was clicked");
-
-     $.post( "/getData_liga", function( data ) {
-     // embed the data into the managerData div tag
-      $( "#liga_table" ).html( data );
-    });
-
- }
-</script>
-
-<!-- SERIE A -->
-<script>
-function getData_serie(){
-     alert("button was clicked");
-
-     $.post( "/getData_serie", function( data ) {
-     // embed the data into the managerData div tag
-      $( "#serie_table" ).html( data );
-    });
-
- }
-</script>
-
-<!-- SHOW PLAYERS DROPDOWN -->
-<script>
-	function getData_players(){
-
-		$.post( "/getData_players", function( data ) {
-			// embed the data into the player select tag
-			$( ".player_data").html( data );
+		$.post( "/getData_admin", function( data ) {
+			// embed the data into the managerData div tag
+			$( "#admin_data" ).html( data );
 		});
 
 	}
 </script>
 
+<!-- PREM -->
+<script>
+	function getData_pl(){
+		alert("button was clicked");
+
+		$.post( "/getData_pl", function( data ) {
+			// embed the data into the managerData div tag
+			$( "#prem_table" ).html( data );
+		});
+
+	}
+</script>
+
+<!-- LA LIGA -->
+<script>
+	function getData_liga(){
+		alert("button was clicked");
+
+		$.post( "/getData_liga", function( data ) {
+			// embed the data into the managerData div tag
+			$( "#liga_table" ).html( data );
+		});
+
+	}
+</script>
+
+<!-- SERIE A -->
+<script>
+	function getData_serie(){
+		alert("button was clicked");
+
+		$.post( "/getData_serie", function( data ) {
+			// embed the data into the managerData div tag
+			$( "#serie_table" ).html( data );
+		});
+
+	}
+</script>
+
+<!-- SHOW PLAYERS DROPDOWN -->
+<script>
+		$.get( "/getData_players", { } )
+				.done(function( data ) {
+					$( ".player_data" ).html( data );
+		});
+
+</script>
+
 <!-- LA LIGA Players-->
 <script>
-function getData_ligaPlayer(){
-     alert("button was clicked");
+	function getData_ligaPlayer(){
+		alert("button was clicked");
 
-     $.post( "/getData_ligaPlayer", function( data ) {
-     // embed the data into the managerData div tag
-      $( "#ligaPlayer_table" ).html( data );
-    });
+		$.post( "/getData_ligaPlayer", function( data ) {
+			// embed the data into the managerData div tag
+			$( "#ligaPlayer_table" ).html( data );
+		});
 
- }
+	}
 </script>
 
 <!-- PREMIER LEAGUE Players-->
 <script>
-function getData_premPlayer(){
-     alert("button was clicked");
+	function getData_premPlayer(){
+		alert("button was clicked");
 
-     $.post( "/getData_premPlayer", function( data ) {
-     // embed the data into the managerData div tag
-      $( "#premPlayer_table" ).html( data );
-    });
+		$.post( "/getData_premPlayer", function( data ) {
+			// embed the data into the managerData div tag
+			$( "#premPlayer_table" ).html( data );
+		});
 
- }
+	}
 </script>
 
 <!-- SERIE A Players-->
 <script>
-function getData_serieaPlayer(){
-     alert("button was clicked");
+	function getData_serieaPlayer(){
+		alert("button was clicked");
 
-     $.post( "/getData_serieaPlayer", function( data ) {
-     // embed the data into the managerData div tag
-      $( "#serieaPlayer_table" ).html( data );
-    });
+		$.post( "/getData_serieaPlayer", function( data ) {
+			// embed the data into the managerData div tag
+			$( "#serieaPlayer_table" ).html( data );
+		});
 
- }
+	}
 </script>
 
 </body>
