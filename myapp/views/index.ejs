@@ -289,40 +289,10 @@
 </div><!-- /footer -->
 
 
-<!----------------------------------------------------------------------------------------------------------------------------->
-<!-- Forums Page -->
-<div data-role="page" id="forum" data-theme="a">
-
-	<div data-role="header">
-		<h1>Forum page</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<h2>Forums</h2>
-
-		Welcome to your space to discuss
 
 
-		<p>Please voice your opinions below</p>
-
-		<form>
-			<label for="fname"> Enter name: </label><br>
-			<input type="text" id="fname" name="fname"><br>
-
-			<label for="formtext"> Enter text below: </label><br>
-			<textarea id="formtext" name="formtext" rows="4" cols="50"></textarea>
-
-			<button id = "submit" class="ui-btn">Submit</button>
-		</form>
-
-		<p><a href="#customer" data-direction="reverse" class="ui-btn ui-corner-all">Go Back</a></p>
-		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
-
-	</div><!-- /content -->
-</div><!-- /footer -->
 
 
-<!----------------------------------------------------------------------------------------------------------------------------->
 
 <!-- Players Stat Page -->
 <div data-role="page" id="playersStat" data-theme="a">
@@ -461,6 +431,121 @@
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
+
+
+
+
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------TESTING FORUM------------------------------------------------------------------>
+<!----------------------------------------------------------------------------------------------------------------------------->
+
+
+
+<div data-role="page" id="forum">
+
+	<div data-role="header">
+		<h1>Page Title</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>Page content goes here.</p>
+        
+        <input type="text" id="username"/>
+        
+        
+        <textarea rows="5" cols="10" id="comment"> </textarea>
+        
+        <button id="postcomment"> Post </button>
+        
+        
+        
+        <div id="commentoutput">
+        
+        </div>
+        
+        <script>
+        // this waits and see if the forum page is opened,
+        // if it is open, it takes the parameter name from the URLSearchParams
+        // to open that forum.
+        $(document).on('pagebeforeshow', "#forum", function (event, data) {
+          const queryString = window.location.search;
+          console.log(queryString);
+          const urlParams = new URLSearchParams(queryString);
+          const fn = urlParams.get('forumname');
+           console.log(fn);
+         $.post( "/getTopLevelComments", { name: fn } )
+                  .done(function( data ) {
+                    $( "#commentoutput" ).html( data );
+                  });
+
+
+
+        });
+    
+
+       
+  
+  
+        </script>
+        
+        
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+
+
+
+
+
+
+
+<div data-role="page" id="indexpage">
+
+	<div data-role="header">
+		<h1>Page Title</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>Page content goes here.</p>
+       
+        
+        
+        <div id="forumnames"> </div>
+        
+        
+        <script>
+      
+        $.post( "/getForumNames", { } )
+          .done(function( data ) {
+            $( "#forumnames" ).html( data );
+          });
+  
+  
+ 
+        </script>
+        
+        
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+
+
+
+
+
+
+
+
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -651,6 +736,43 @@
 
 	}
 </script>
+
+
+
+<!-- FORUMS TEST CODE-->
+
+<script>
+var openForumName = '';
+</script>
+
+
+<script>
+
+$( "#postcomment" ).click(function() {
+
+
+        var username = $('#username').val();
+        var comment = $('#comment').val();
+        
+        $.post( "/putInDatabase", { username: username, comment: comment })
+          .done(function( data ) {
+            alert( "Data Loaded: " + data );
+          });
+
+
+
+});
+
+
+
+
+
+</script>
+
+
+
+
+
 
 </body>
 </html>

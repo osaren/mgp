@@ -41,7 +41,7 @@ app.post('/register',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
 
     });
@@ -77,7 +77,7 @@ app.post('/login',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
 
     });
@@ -120,7 +120,7 @@ app.post('/teams',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
 
     });
@@ -147,7 +147,7 @@ app.post('/getData_admin',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
     });
 
@@ -189,7 +189,7 @@ app.post('/getData_pl',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
     });
 
@@ -230,7 +230,7 @@ app.post('/getData_liga',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
     });
 
@@ -271,7 +271,7 @@ app.post('/getData_serie',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
     });
 
@@ -312,7 +312,7 @@ app.post('/getData_ligaPlayer',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
     });
 
@@ -353,7 +353,7 @@ app.post('/getData_premPlayer',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
     });
 
@@ -393,13 +393,13 @@ app.post('/getData_serieaPlayer',function(req,res){
         host     : 'localhost',
         user     : 'root',
         password : '',
-        port : 3306,
+        port : 3309,
         database : 'mgp'
     });
 
     connection.connect()
 
-    connection.query('SELECT * from seriaplayer', function (err, rows) {
+    connection.query('SELECT * from serieaplayer', function (err, rows) {
         if (err) throw err
         let output = '';
         for(let i=0; i< rows.length; i++){
@@ -435,6 +435,7 @@ app.get('/getData_players', function (req, res) {
     const con = mysql.createConnection({
         host: "localhost",
         user: "root",
+		port : 3309,
         database: "mgp",
         password: ""
     });
@@ -467,15 +468,157 @@ app.use(function(req, res, next) {
     next(createError(404));
 });
 
-// error handler
-app.use(function(err, req, res) {
-    // set locals, only providing error in development
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+// ------------------------FORUMS TEST ----------------------------------
+
+app.post('/getForumNames', function (req, res) {
+   
+
+   
+  // put the data in the database
+  // pulling in mysql
+  var mysql = require('mysql');
+   // set up a connection  
+  var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  port : 3309,
+  database: "mgp",
+  password: ""
+  });
+  
+  
+  con.connect(function(err) {
+  if (err) throw err;
+  var sql = "SELECT distinct forumname from forum;";
+  console.log(sql);
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+    
+    var output = '';
+    for(var i=0; i<result.length;i++){
+        
+        output = output + '<a data-ajax="false" href="/?forumname='+ result[i].forumname + '">'+ result[i].forumname +'</a><br>';
+    }
+    
+    
+    
+    
+    
+    res.send(output);
+    
+  });
+});
+
+   
+   
+   
+   
+});
+
+app.post('/getTopLevelComments', function (req, res) {
+   
+  var forumname = req.body.name;
+   
+  // put the data in the database
+  // pulling in mysql
+  var mysql = require('mysql');
+   // set up a connection  
+  var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  port : 3309,
+  database: "mgp",
+  password: ""
+  });
+  
+  
+  con.connect(function(err) {
+  if (err) throw err;
+  var sql = "SELECT * FROM forum WHERE parent = 0 AND forumname = '"+forumname+"'";
+  console.log(sql);
+  con.query(sql, function (err, result, fields) {
+    if (err) throw err;
+    console.log(result);
+    
+    var output = '';
+    for(var i=0; i<result.length;i++){
+        
+        output = output + result[i].username + ' ' + result[i].comment + '<br>';
+    }
+    
+    
+    
+    
+    
+    res.send(output);
+    
+  });
+});
+
+   
+   
+   
+   
+});
+
+
+app.post('/putInDatabase', function (req, res) {
+  
+  // catching the variables
+  var username = req.body.username;
+  var comment = req.body.comment;
+ 
+  
+  // put the data in the database
+  // pulling in mysql
+  var mysql = require('mysql');
+
+  
+ // set up a connection  
+  var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  port : 3309,
+  database: "mgp",
+  password: ""
+  });
+  
+  
+  con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+  var sql = "INSERT INTO `mgp`.`forum` (`username`, `comment`, `forumname`) VALUES ('"+username+"', '"+comment+"', 'first');";
+  console.log(sql);
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log("1 record inserted");
+  });
+});
+  res.send('Data went to the database');
+  
+  
+})
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  next(createError(404));
+});
+
+
+
+
+
+// error handler
+app.use(function(err, req, res, next) {
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get('env') === 'development' ? err : {};
+
+  // render the error page
+  res.status(err.status || 500);
+  res.render('error');
 });
 
 module.exports = app;
