@@ -1,0 +1,97 @@
+Players database table
+
+ 
+
+ 
+
+-- Dumping database structure for test
+
+CREATE DATABASE IF NOT EXISTS `test` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `test`;
+
+ 
+
+-- Dumping structure for table test.players
+
+CREATE TABLE IF NOT EXISTS `players` (
+
+  `playername` varchar(50) DEFAULT NULL,
+
+ `playergroup` varchar(50) DEFAULT NULL
+
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+ 
+
+-- Dumping data for table test.players: ~0 rows (approximately)
+
+/*!40000 ALTER TABLE `players` DISABLE KEYS */;
+
+INSERT INTO `players` (`playername`, `playergroup`) VALUES
+
+                ('1', 'a'),
+
+                ('2', 'b'),
+
+                ('3', 'a');
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+ 
+
+Forum database table
+
+ 
+
+ 
+
+-- Dumping database structure for test
+
+CREATE DATABASE IF NOT EXISTS `test` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `test`;
+
+ 
+
+-- Dumping structure for table test.forum
+
+CREATE TABLE IF NOT EXISTS `forum` (
+
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+
+  `username` varchar(50) NOT NULL DEFAULT '0',
+
+  `comment` varchar(500) NOT NULL DEFAULT '0',
+
+  `parent` int(20) NOT NULL DEFAULT '0',
+
+  `forumname` varchar(50) NOT NULL DEFAULT '0',
+
+  PRIMARY KEY (`id`)
+
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+ 
+
+-- Dumping data for table test.forum: ~5 rows (approximately)
+
+/*!40000 ALTER TABLE `forum` DISABLE KEYS */;
+
+INSERT INTO `forum` (`id`, `username`, `comment`, `parent`, `forumname`) VALUES
+
+                (1, 'kyle', 'test', 0, 'first'),
+
+                (2, 'test', 'test', 1, 'first'),
+
+                (3, 'kyle', 'test', 0, 'first'),
+
+                (4, 'aaa', ' aaa', 0, 'second');
