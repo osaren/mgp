@@ -477,9 +477,9 @@ app.post('/getForumNames', function (req, res) {
    
   // put the data in the database
   // pulling in mysql
-  var mysql = require('mysql');
+  const mysql = require('mysql');
    // set up a connection  
-  var con = mysql.createConnection({
+  const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   port : 3309,
@@ -490,14 +490,14 @@ app.post('/getForumNames', function (req, res) {
   
   con.connect(function(err) {
   if (err) throw err;
-  var sql = "SELECT distinct forumname from forum;";
+  const sql = "SELECT distinct forumname from forum;";
   console.log(sql);
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     console.log(result);
     
-    var output = '';
-    for(var i=0; i<result.length;i++){
+    const output = '';
+    for(const i=0; i<result.length;i++){
         
         output = output + '<a data-ajax="false" href="/?forumname='+ result[i].forumname + '">'+ result[i].forumname +'</a><br>';
     }
@@ -519,13 +519,13 @@ app.post('/getForumNames', function (req, res) {
 
 app.post('/getTopLevelComments', function (req, res) {
    
-  var forumname = req.body.name;
+  const forumname = req.body.name;
    
   // put the data in the database
   // pulling in mysql
-  var mysql = require('mysql');
+  const mysql = require('mysql');
    // set up a connection  
-  var con = mysql.createConnection({
+  const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   port : 3309,
@@ -536,14 +536,14 @@ app.post('/getTopLevelComments', function (req, res) {
   
   con.connect(function(err) {
   if (err) throw err;
-  var sql = "SELECT * FROM forum WHERE parent = 0 AND forumname = '"+forumname+"'";
+  const sql = "SELECT * FROM forum WHERE parent = 0 AND forumname = '"+forumname+"'";
   console.log(sql);
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     console.log(result);
     
-    var output = '';
-    for(var i=0; i<result.length;i++){
+    const output = '';
+    for(const i=0; i<result.length;i++){
         
         output = output + result[i].username + ' ' + result[i].comment + '<br>';
     }
@@ -566,18 +566,18 @@ app.post('/getTopLevelComments', function (req, res) {
 
 app.post('/putInDatabase', function (req, res) {
   
-  // catching the variables
-  var username = req.body.username;
-  var comment = req.body.comment;
+  // catching the constiables
+  const username = req.body.username;
+  const comment = req.body.comment;
  
   
   // put the data in the database
   // pulling in mysql
-  var mysql = require('mysql');
+  const mysql = require('mysql');
 
   
  // set up a connection  
-  var con = mysql.createConnection({
+  const con = mysql.createConnection({
   host: "localhost",
   user: "root",
   port : 3309,
@@ -589,7 +589,7 @@ app.post('/putInDatabase', function (req, res) {
   con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  var sql = "INSERT INTO `mgp`.`forum` (`username`, `comment`, `forumname`) VALUES ('"+username+"', '"+comment+"', 'first');";
+  const sql = "INSERT INTO `mgp`.`forum` (`username`, `comment`, `forumname`) VALUES ('"+username+"', '"+comment+"', 'first');";
   console.log(sql);
   con.query(sql, function (err, result) {
     if (err) throw err;
