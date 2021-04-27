@@ -1,3 +1,5 @@
+// Start server:    set DEBUG=myapp:* & npm start
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
@@ -536,8 +538,8 @@ app.post('/getTopLevelComments', function (req, res) {
   
   con.connect(function(err) {
   if (err) throw err;
-  var sql = "SELECT * FROM forum WHERE parent = 0 AND forumname = '"+forumname+"'";
-  console.log(sql);
+      const sql = "SELECT * FROM forum WHERE parent = 0 AND forumname = '" + forumname + "'";
+      console.log(sql);
   con.query(sql, function (err, result, fields) {
     if (err) throw err;
     console.log(result);
