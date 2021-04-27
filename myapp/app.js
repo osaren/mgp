@@ -25,6 +25,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
+app.use( express.static( "public" ) );
 
 app.post('/register',function(req,res){
     //get the username
