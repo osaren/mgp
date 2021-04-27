@@ -496,8 +496,8 @@ app.post('/getForumNames', function (req, res) {
     if (err) throw err;
     console.log(result);
     
-    const output = '';
-    for(const i=0; i<result.length;i++){
+    let output = '';
+    for(let i=0; i<result.length;i++){
         
         output = output + '<a data-ajax="false" href="/?forumname='+ result[i].forumname + '">'+ result[i].forumname +'</a><br>';
     }
@@ -542,8 +542,8 @@ app.post('/getTopLevelComments', function (req, res) {
     if (err) throw err;
     console.log(result);
     
-    const output = '';
-    for(const i=0; i<result.length;i++){
+    let output = '';
+    for(let i=0; i<result.length;i++){
         
         output = output + result[i].username + ' ' + result[i].comment + '<br>';
     }
