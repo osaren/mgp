@@ -486,8 +486,7 @@ app.post('/getForumNames', function (req, res) {
   database: "mgp",
   password: ""
   });
-  
-  
+    
   con.connect(function(err) {
   if (err) throw err;
   const sql = "SELECT distinct forumname from forum;";
@@ -509,6 +508,8 @@ app.post('/getForumNames', function (req, res) {
     res.send(output);
     
   });
+  
+  
 });
 
    
@@ -545,7 +546,7 @@ app.post('/getTopLevelComments', function (req, res) {
     let output = '';
     for(let i=0; i<result.length;i++){
         
-        output = output + result[i].username + ' ' + result[i].comment + '<br>';
+        output = output + result[i].author + ' ' + result[i].comment + '<br>';
     }
     
     
@@ -567,7 +568,7 @@ app.post('/getTopLevelComments', function (req, res) {
 app.post('/putInDatabase', function (req, res) {
   
   // catching the constiables
-  const username = req.body.username;
+  const author = req.body.author;
   const comment = req.body.comment;
  
   
@@ -589,7 +590,7 @@ app.post('/putInDatabase', function (req, res) {
   con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
-  const sql = "INSERT INTO `mgp`.`forum` (`username`, `comment`, `forumname`) VALUES ('"+username+"', '"+comment+"', 'first');";
+  const sql = "INSERT INTO `mgp`.`forum` (`author`, `comment`, `forumname`) VALUES ('"+author+"', '"+comment+"', 'first');";
   console.log(sql);
   con.query(sql, function (err, result) {
     if (err) throw err;
