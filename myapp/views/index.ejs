@@ -8,13 +8,11 @@
 	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
 	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-	<!--<link rel="stylesheet" href="public/stylesheets/style.css"> -->
 </head>
 
 <body>
-
-<!----------------------------------------------------------------------------------------------------------------------------->
-<!-- WELCOME PAGE (INDEX) -->
+	
+<!-- Public Page (INDEX) -->
 <div data-role="page" id="one">
 	<div data-role="header">
 		<h1>FPL APP </h1>
@@ -43,9 +41,6 @@
 	</div><!-- /footer -->
 </div><!-- /page one -->
 
-
-
-<!----------------------------------------------------------------------------------------------------------------------------->
 <!-- About Page -->
 <div data-role="page" id="about">
 	<div data-role="header">
@@ -79,9 +74,6 @@
 </div><!-- /page one -->
 
 
-
-
-
 <!----------------------------------------------------------------------------------------------------------------------------->
 <!-- Contact Page -->
 <div data-role="page" id="contact">
@@ -107,8 +99,6 @@
 		<h4>Developed By Mark Aigbe, Josh Capellan, Dylan Forman </h4>
 	</div><!-- /footer -->
 </div><!-- /page one -->
-
-
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -141,14 +131,9 @@
 	</div><!-- /content -->
 
 	<div data-role="footer" data-theme="a">
-		<h4>Developed By Mark Aigbe, Josh Capellan, Dylan Forman </h4>
+		<h4>Developed By Mark Aigbe and Josh Capellan</h4>
 	</div><!-- /footer -->
 </div><!-- /page one -->
-
-
-
-
-
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -208,7 +193,7 @@
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
-<!-- TEAM -->
+<!-- Create A TEAM -->
 <div data-role="page" id="four" data-theme="a">
 
 	<div data-role="header">
@@ -219,18 +204,18 @@
 	<div role="main" class="ui-content">
 		<h2>Create a team</h2>
 
-		<label>GK</label><div class="player_data" id="goal_keeper"> </div>
-		<label>RB</label><div class="player_data" id="right_back"> </div>
-		<label>CB</label><div class="player_data" id="center_back_1"> </div>
-		<label>CB</label><div class="player_data" id="center_back_2"> </div>
-		<label>LB</label><div class="player_data" id="left_back"> </div>
-		<label>RM</label><div class="player_data" id="right_mid"> </div>
-		<label>CM</label><div class="player_data" id="center_mid_1"> </div>
-		<label>CM</label><div class="player_data" id="center_mid_2"> </div>
-		<label>LM</label><div class="player_data" id="left_mid"> </div>
-		<label>ST</label><div class="player_data" id="striker1"> </div>
-		<label>ST</label><div class="player_data" id="striker2"> </div>
-		<button id = "submitTeam" class="ui-btn">Submit Team</button>
+		<label>GK</label><select class="player_data" id="goal_keeper" onclick=""> </select>
+		<label>RB</label><select class="player_data" id="right_back" onclick="getPlayers()"> </select>
+		<label>CB</label><select class="player_data" id="center_back_1" onclick="getPlayers()"> </select>
+		<label>CB</label><select class="player_data" id="center_back_2" onclick="getPlayers()"> </select>
+		<label>LB</label><select class="player_data" id="left_back" onclick="getPlayers()"> </select>
+		<label>RM</label><select class="player_data" id="right_mid" onclick="getPlayers()"> </select>
+		<label>CM</label><select class="player_data" id="center_mid_1" onclick="getPlayers()"> </select>
+		<label>CM</label><select class="player_data" id="center_mid_2" onclick="getPlayers()"> </select>
+		<label>LM</label><select class="player_data" id="left_mid" onclick="getPlayers()"> </select>
+		<label>ST</label><select class="player_data" id="striker1" onclick="getPlayers()"> </select>
+		<label>ST</label><select class="player_data" id="striker2" onclick="getPlayers()"> </select>
+		<button id = "submitTeam" class="ui-btn" onclick="submitTeam()">Submit Team</button>
 
 		<p><a href="#customer" data-direction="reverse" class="ui-btn ui-corner-all">Go Back</a></p>
 		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Logout</a></p>
@@ -239,7 +224,7 @@
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
-</div><!-- /page cook -->
+</div><!-- /page end -->
 
 <!----------------------------------------------------------------------------------------------------------------------------->
 <!-- TABLES -->
@@ -263,7 +248,8 @@
 	<div data-role="footer">
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
-</div><!-- /page cook -->
+</div><!-- /page end -->
+
 
 <div data-role="page" id="seven" data-theme="a">
 
@@ -291,7 +277,6 @@
 </div><!-- /page seven -->
 
 
-
 <div data-role="page" id="eight" data-theme="a">
 
 	<div data-role="header">
@@ -316,7 +301,6 @@
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page eight -->
-
 
 
 <div data-role="page" id="nine" data-theme="a">
@@ -346,7 +330,7 @@
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
-<!-- ADMIN CUSTOMER PAGES -->
+<!-- ADMIN + CUSTOMER PAGES -->
 <!-- ADMIN -->
 <div data-role="page" id="admin" data-theme="a">
 
@@ -405,11 +389,6 @@
 </div><!-- /footer -->
 
 
-
-
-
-
-
 <!-- Players Stat Page -->
 <div data-role="page" id="playersStat" data-theme="a">
 
@@ -427,6 +406,7 @@
 
 	</div><!-- /content -->
 </div><!-- /footer -->
+
 
 <div data-role="page" id="premPlayers" data-theme="a">
 
@@ -470,7 +450,6 @@
 </div><!-- /page seven -->
 
 
-
 <div data-role="page" id="ligaPlayers" data-theme="a">
 
 	<div data-role="header">
@@ -497,7 +476,6 @@
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page eight -->
-
 
 
 <div data-role="page" id="seriePlayers" data-theme="a">
@@ -547,8 +525,6 @@
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
-
-
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -602,11 +578,7 @@
 
 
         });
-    
 
-       
-  
-  
         </script>
         
         
@@ -616,15 +588,6 @@
 		<h4>Page Footer</h4>
 	</div><!-- /footer -->
 </div><!-- /page -->
-
-
-
-
-
-
-
-
-
 
 <div data-role="page" id="indexpage" data-theme="a">
 
@@ -646,9 +609,6 @@
           .done(function( data ) {
             $( "#forumnames" ).html( data );
           });
-  
-  
- 
         </script>
         
         
@@ -659,241 +619,27 @@
 	</div><!-- /footer -->
 </div><!-- /page -->
 
-
-
-
-
-
-
-
-
-
-
-<!----------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------SCRIPTS------------------------------------------------------------------>
-<!----------------------------------------------------------------------------------------------------------------------------->
-
-<!-- REGISTER -->
-<script>
-	$("#register").click(function() {
-		console.log("clicked");
-
-		// get the username and the password
-		const un = $("#regUsername").val();
-		const pw = $("#regPassword").val();
-
-		// AJAX POST to the /register page
-		$.post( "/register", { username: un, password: pw})
-				.done(function( data ) {
-					alert( "Data Loaded: " + data );
-
-					// redirect to the customer page.
-					window.location="/#customer";
-
-				});
-	});
-</script>
-
-
-<!-- LOGIN -->
-<script>
-	$("#login").click(function() {
-		console.log("clicked");
-
-		// get the username and the password
-		const un = $("#username").val();
-		const pw = $("#password").val();
-
-		// AJAX POST to the /login page
-		$.post( "/login", { username: un, password: pw })
-				.done(function( data ) {
-					alert( "Data Loaded: " + data );
-
-					if(data.includes('customer')){
-						// redirect to the customer page.
-						window.location="/#customer";
-
-					}
-
-					else if(data.includes('admin')){
-						window.location="/#admin";
-					}
-
-					// basically refresh page if no login data
-					else{
-						window.location="/#login";
-						console.log("LOGIN FAILED");
-					}
-				});
-	});
-</script>
-
-<!-- SUBMIT TEAM -->
-<script>
-	$("#submitTeam").click(function() {
-		//console.log("button clicked");
-
-		// get the team values
-		const goal_keeper = $("#goal_keeper").val();
-		const right_back = $("#right_back").val();
-		const center_back_1 = $("#center_back_1").val();
-		const center_back_2 = $("#center_back_2").val();
-		const left_back = $("#left_back").val();
-		const right_mid = $("#right_mid").val();
-		const center_mid_1 = $("#center_mid_1").val();
-		const center_mid_2 = $("#center_mid_2").val();
-		const left_mid = $("#left_mid").val();
-		const striker1 = $("#striker1").val();
-		const striker2 = $("#striker2").val();
-
-
-		// AJAX POST to the /team page
-		$.post("/teams", { gk: goal_keeper, rb: right_back, cb1: center_back_1, cb2: center_back_2, lb: left_back, rm: right_mid, cm1: center_mid_1, cm2: center_mid_2, lm: left_mid, st1: striker1, st2: striker2})
-				.done(function( data ) {
-					alert( "Data Loaded: " + data );
-					// redirect to the customer page.
-					window.location="/#customer";
-				});
-	});
-</script>
-
-<!-- SHOW TABLES -->
-<!-- ADMIN -->
-<script>
-	function getData_admin(){
-		alert("button was clicked");
-
-		$.post( "/getData_admin", function( data ) {
-			// embed the data into the managerData div tag
-			$( "#admin_data" ).html( data );
-		});
-
-	}
-</script>
-
-<!-- PREM -->
-<script>
-	function getData_pl(){
-		alert("button was clicked");
-
-		$.post( "/getData_pl", function( data ) {
-			// embed the data into the managerData div tag
-			$( "#prem_table" ).html( data );
-		});
-
-	}
-</script>
-
-<!-- LA LIGA -->
-<script>
-	function getData_liga(){
-		alert("button was clicked");
-
-		$.post( "/getData_liga", function( data ) {
-			// embed the data into the managerData div tag
-			$( "#liga_table" ).html( data );
-		});
-
-	}
-</script>
-
-<!-- SERIE A -->
-<script>
-	function getData_serie(){
-		alert("button was clicked");
-
-		$.post( "/getData_serie", function( data ) {
-			// embed the data into the managerData div tag
-			$( "#serie_table" ).html( data );
-		});
-
-	}
-</script>
-
-<!-- SHOW PLAYERS DROPDOWN -->
-<script>
-		$.get( "/getData_players", { } )
-				.done(function( data ) {
-					$( ".player_data" ).html( data );
-		});
-
-</script>
-
-<!-- LA LIGA Players-->
-<script>
-	function getData_ligaPlayer(){
-		alert("button was clicked");
-
-		$.post( "/getData_ligaPlayer", function( data ) {
-			// embed the data into the managerData div tag
-			$( "#ligaPlayer_table" ).html( data );
-		});
-
-	}
-</script>
-
-<!-- PREMIER LEAGUE Players-->
-<script>
-	function getData_premPlayer(){
-		alert("button was clicked");
-
-		$.post( "/getData_premPlayer", function( data ) {
-			// embed the data into the managerData div tag
-			$( "#premPlayer_table" ).html( data );
-		});
-
-	}
-</script>
-
-<!-- SERIE A Players-->
-<script>
-	function getData_serieaPlayer(){
-		alert("button was clicked");
-
-		$.post( "/getData_serieaPlayer", function( data ) {
-			// embed the data into the managerData div tag
-			$( "#serieaPlayer_table" ).html( data );
-		});
-
-	}
-</script>
-
-
-
 <!-- FORUMS TEST CODE-->
-
 <script>
-var openForumName = '';
+	var openForumName = '';
 </script>
 
 
 <script>
-
 $( "#postcomment" ).click(function() {
-
-
-        var author = $('#author').val();
-        var comment = $('#comment').val();
-        
-        $.post( "/putInDatabase", { author: author, comment: comment })
-          .done(function( data ) {
-            alert( "Data Loaded: " + data );
-          });
-
-
-
+	var author = $('#author').val();
+	var comment = $('#comment').val();
+	
+	$.post( "/putInDatabase", { author: author, comment: comment })
+	.done(function( data ) {
+		alert( "Data Loaded: " + data );
+	});
 });
-
-
-
-
-
 </script>
 
 
-
-
-
-
+<script src="./scripts/tables.js"></script>
+<script src="./scripts/players.js"></script>
+<script src="./scripts/userHandler.js"></script>
 </body>
 </html>

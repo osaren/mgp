@@ -3,29 +3,26 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
-
 const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/login', loginRouter);
 app.use( express.static( "public" ) );
+app.use('/scripts', express.static(__dirname + '/scripts/'));
 
 app.post('/register',function(req,res){
     //get the username
@@ -91,10 +88,7 @@ app.post('/login',function(req,res){
         for(let i=0; i< rows.length; i++){
             console.log('Acc type: ', rows[i].acctype)
 
-            // we can only ever send back ONE res.send(). This is the response that will be sent back to the user.
-            // in this case, we are sending back the account type to the JavaScript that called this piece of codePointAt
-            // to make sure that we will send them to the correct page.
-            res.send(rows[i].acctype); // send the account type back to jQuery mobile.
+            res.send(rows[i].acctype);
         }
     });
     connection.end();
@@ -608,10 +602,6 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
-
-
-
-
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
@@ -622,5 +612,4 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
 module.exports = app;

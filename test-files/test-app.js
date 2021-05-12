@@ -7,24 +7,24 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-var app = express();
+var testApp = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'ejs');
+testApp.set('views', path.join(__dirname, 'views'));
+testApp.set('view engine', 'ejs');
 
-app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+testApp.use(logger('dev'));
+testApp.use(express.json());
+testApp.use(express.urlencoded({ extended: false }));
+testApp.use(cookieParser());
+testApp.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+testApp.use('/', indexRouter);
+testApp.use('/users', usersRouter);
 
 
 
-app.get('/getPlayers', function (req, res) {
+testApp.get('/getPlayers', function (req, res) {
     // put the data in the database
     // pulling in mysql
     var mysql = require('mysql');
@@ -73,7 +73,7 @@ app.get('/getPlayers', function (req, res) {
     });
 });
 
-app.post('/getForumNames', function (req, res) {
+testApp.post('/getForumNames', function (req, res) {
 
     // put the data in the database
     // pulling in mysql
@@ -104,7 +104,7 @@ app.post('/getForumNames', function (req, res) {
     });
 });
 
-app.post('/getTopLevelComments', function (req, res) {
+testApp.post('/getTopLevelComments', function (req, res) {
 
     var forumname = req.body.name;
 
@@ -139,7 +139,7 @@ app.post('/getTopLevelComments', function (req, res) {
 });
 
 
-app.post('/putInDatabase', function (req, res) {
+testApp.post('/putInDatabase', function (req, res) {
 
     // catching the variables
     var username = req.body.username;
@@ -171,11 +171,11 @@ app.post('/putInDatabase', function (req, res) {
 })
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+testApp.use(function(req, res, next) {
     next(createError(404));
 });
 // error handler
-app.use(function(err, req, res, next) {
+testApp.use(function(err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};
@@ -185,4 +185,4 @@ app.use(function(err, req, res, next) {
     res.render('error');
 });
 
-module.exports = app;
+module.exports = testApp;
