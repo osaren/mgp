@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" lang="">
 <head>
-
 	<title>mgp</title>
 	<link rel="stylesheet" href="stylesheets/themes/RED.min.css" />
 	<link rel="stylesheet" href="stylesheets/themes/jquery.mobile.icons.min.css" />
@@ -506,138 +505,16 @@
 </div><!-- /page nine -->
 
 
-<div data-role="page" id="test">
+<!-- FORUM TEST-->
 
-	<div data-role="header">
-		<h1>Page Title</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<p>Page content goes here.</p>
-
-
-
-		<div class="player_data"> </div>
-
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-
-
-<!----------------------------------------------------------------------------------------------------------------------------->
-<!----------------------------------------------------TESTING FORUM------------------------------------------------------------------>
-<!----------------------------------------------------------------------------------------------------------------------------->
-
-
-
-<div data-role="page" id="forum" data-theme="a">
-
-	<div data-role="header">
-		<h1>Page Title</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<p>Page content goes here.</p>
-        
-		<br>
-		
-		<p> Enter Name: </p>
-        <input type="text" id="author"/>
-        
-		<br>
-		
-        <p>Enter comment: </p>
-        <textarea rows="5" cols="10" id="comment"> </textarea>
-        
-        <button id="postcomment"> Post </button>
-        
-        
-        
-        <div id="commentoutput">
-        
-        </div>
-        
-        <script>
-        // this waits and see if the forum page is opened,
-        // if it is open, it takes the parameter name from the URLSearchParams
-        // to open that forum.
-        $(document).on('pagebeforeshow', "#forum", function (event, data) {
-          const queryString = window.location.search;
-          console.log(queryString);
-          const urlParams = new URLSearchParams(queryString);
-          const fn = urlParams.get('forumname');
-           console.log(fn);
-         $.post( "/getTopLevelComments", { name: fn } )
-                  .done(function( data ) {
-                    $( "#commentoutput" ).html( data );
-                  });
-
-
-
-        });
-
-        </script>
-        
-        
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-
-<div data-role="page" id="indexpage" data-theme="a">
-
-	<div data-role="header">
-		<h1>Page Title</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<p>Page content goes here.</p>
-       
-        
-        
-        <div id="forumnames"> </div>
-        
-        
-        <script>
-      
-        $.post( "/getForumNames", { } )
-          .done(function( data ) {
-            $( "#forumnames" ).html( data );
-          });
-        </script>
-        
-        
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
-
-<!-- FORUMS TEST CODE-->
+<script src="/socket.io/socket.io.js"></script>
 <script>
-	var openForumName = '';
+var socket = io();
+
+socket.on('message', message =>{
+	console.log(message);
+})
 </script>
-
-
-<script>
-$( "#postcomment" ).click(function() {
-	var author = $('#author').val();
-	var comment = $('#comment').val();
-	
-	$.post( "/putInDatabase", { author: author, comment: comment })
-	.done(function( data ) {
-		alert( "Data Loaded: " + data );
-	});
-});
-</script>
-
-
 <script src="./scripts/tables.js"></script>
 <script src="./scripts/players.js"></script>
 <script src="./scripts/userHandler.js"></script>

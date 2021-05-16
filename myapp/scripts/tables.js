@@ -42,5 +42,3 @@ const getData_serie = function(){
     });
 
 }
-
-module.exports = {getData_admin, getData_serie, getData_pl, getData_liga};
