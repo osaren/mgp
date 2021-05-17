@@ -5,10 +5,12 @@ const socketapi = {
 
 // Add your socket.io logic here!
 io.on( "connection", function( socket ) {
-    console.log( "WebSocket Connection - ID: " , socket.id);
+    console.log( "Made WebSocket Connection - ID: " , socket.id);
 
     // welcome current user
-    socket.emit('message', "Socket IO setup right!!!");
+    socket.on('chat',function(data){
+        io.emit('chat', data);
+    });
 });
 // end of socket.io logic
 

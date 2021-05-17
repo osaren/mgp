@@ -505,18 +505,33 @@
 </div><!-- /page nine -->
 
 
-<!-- FORUM TEST-->
+<!-- FORUM Page-->
+<div data-role="page" id="forum" data-theme="a">
+	<div data-role="header">
+		<h1>forum</h1>
+	</div><!-- /header -->
 
+
+	<div role="main" class="ui-content">
+		<div id="chatBox">
+			<h2>Forum</h2>
+			<div id="output"></div>
+		</div>
+		<input id="handle" type="text" placeholder="Handle"/>
+		<input id="message" type="text" placeholder="Message"/>
+		<button id="send">Send Messag</button>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page nine -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 <script src="/socket.io/socket.io.js"></script>
-<script>
-var socket = io();
-
-socket.on('message', message =>{
-	console.log(message);
-})
-</script>
-<script src="./scripts/tables.js"></script>
-<script src="./scripts/players.js"></script>
-<script src="./scripts/userHandler.js"></script>
+<script src="../scripts/chat.js"></script>
+<script src="../scripts/tables.js"></script>
+<script src="../scripts/players.js"></script>
+<script src="../scripts/userHandler.js"></script>
 </body>
 </html>
