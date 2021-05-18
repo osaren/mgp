@@ -3,8 +3,13 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const indexRouter = require('./routes/index');
 const app = express();
+
+// routes
+const indexRouter = require('./routes/index');
+const registerRouter = require('./routes/register');
+const loginRouter = require('./routes/login');
+const forumRouter = require('./routes/forum');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -15,78 +20,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
+app.use('/register', registerRouter);
+app.use('/login', loginRouter);
+app.use('/forum', forumRouter);
 app.use( express.static( "public" ) );
 app.use('/scripts', express.static(__dirname + '/scripts/'));
-
-app.post('/register',function(req,res){
-    //get the username
-    const regUsername=req.body.username;
-
-    // get the password
-    const regPass = req.body.password;
-
-    console.log("User name = "+ regUsername + " Password: " + regPass);
-
-    // connect to the db
-    const mysql = require('mysql')
-    const connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : '',
-        port : 3309,
-        database : 'mgp'
-
-    });
-
-    connection.connect()
-    const sql = "INSERT INTO `mgp`.`users` (`username`, `password`, `acctype`) VALUES ('"+regUsername+"', '"+regPass+"', 'customer')";
-    connection.query(sql, function (err){
-        // ensuring to throw something whether there's an error or not
-        if(err) throw err;
-
-        // confirms if working
-        console.log("Inserted new user!");
-    });
-
-    res.send("Hello there = " + regUsername + " Password: " + regPass);
-});
-
-app.post('/login',function(req,res){
-
-    //get the username
-    const username=req.body.username;
-
-    // get the password
-    const pass = req.body.password;
-
-    // log username and pass
-    console.log("User name = "+username);
-    console.log("Password = "+pass);
-
-    // connect to the db
-    const mysql = require('mysql')
-    const connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : '',
-        port : 3309,
-        database : 'mgp'
-
-    });
-
-    connection.connect();
-    connection.query('SELECT * from users WHERE username = "'+username+'" AND password = "'+pass+'"', function (err, rows) {
-        // ensuring to throw something whether there's an error or not
-        if(err) throw err;
-        console.log("Connected to DB!");
-        for(let i=0; i< rows.length; i++){
-            console.log('Acc type: ', rows[i].acctype)
-
-            res.send(rows[i].acctype);
-        }
-    });
-    connection.end();
-});
 
 app.post('/teams',function(req,res){
     //get the values of each position in the team
@@ -438,7 +376,7 @@ app.get('/getData_players', function (req, res) {
         console.log(sql);
         con.query(sql, function (err, result) {
             if (err) throw err;
-            console.log(result);
+            //console.log(result);
 
             output = output + '<select>';
             for(let i=0; i<result.length;i++){
@@ -451,145 +389,6 @@ app.get('/getData_players', function (req, res) {
         });
     });
 });
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-    next(createError(404));
-});
-
-
-// ------------------------FORUMS TEST ----------------------------------
-
-app.post('/getForumNames', function (req, res) {
-   
-
-   
-  // put the data in the database
-  // pulling in mysql
-  const mysql = require('mysql');
-   // set up a connection  
-  const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  port : 3309,
-  database: "mgp",
-  password: ""
-  });
-    
-  con.connect(function(err) {
-  if (err) throw err;
-  const sql = "SELECT distinct forumname from forum;";
-  console.log(sql);
-  con.query(sql, function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-    
-    let output = '';
-    for(let i=0; i<result.length;i++){
-        
-        output = output + '<a data-ajax="false" href="/?forumname='+ result[i].forumname + '">'+ result[i].forumname +'</a><br>';
-    }
-    
-    
-    
-    
-    
-    res.send(output);
-    
-  });
-  
-  
-});
-
-   
-   
-   
-   
-});
-
-app.post('/getTopLevelComments', function (req, res) {
-   
-  const forumname = req.body.name;
-   
-  // put the data in the database
-  // pulling in mysql
-  const mysql = require('mysql');
-   // set up a connection  
-  const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  port : 3309,
-  database: "mgp",
-  password: ""
-  });
-  
-  
-  con.connect(function(err) {
-  if (err) throw err;
-  const sql = "SELECT * FROM forum WHERE parent = 0 AND forumname = '"+forumname+"'";
-  console.log(sql);
-  con.query(sql, function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-    
-    let output = '';
-    for(let i=0; i<result.length;i++){
-        
-        output = output + result[i].author + ' ' + result[i].comment + '<br>';
-    }
-    
-    
-    
-    
-    
-    res.send(output);
-    
-  });
-});
-
-   
-   
-   
-   
-});
-
-
-app.post('/putInDatabase', function (req, res) {
-  
-  // catching the constiables
-  const author = req.body.author;
-  const comment = req.body.comment;
- 
-  
-  // put the data in the database
-  // pulling in mysql
-  const mysql = require('mysql');
-
-  
- // set up a connection  
-  const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  port : 3309,
-  database: "mgp",
-  password: ""
-  });
-  
-  
-  con.connect(function(err) {
-  if (err) throw err;
-  console.log("Connected!");
-  const sql = "INSERT INTO `mgp`.`forum` (`author`, `comment`, `forumname`) VALUES ('"+author+"', '"+comment+"', 'first');";
-  console.log(sql);
-  con.query(sql, function (err, result) {
-    if (err) throw err;
-    console.log("1 record inserted");
-  });
-});
-  res.send('Data went to the database');
-  
-  
-})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

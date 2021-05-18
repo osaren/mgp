@@ -27,8 +27,8 @@
 
 		Welcome! 
 
-		<p><a href="#two" class="ui-btn ui-shadow ui-corner-all">Register</a></p>
-		<p><a href="#Three" class="ui-btn ui-shadow ui-corner-all">Login</a></p>
+		<p><a href="/register" class="ui-btn ui-shadow ui-corner-all">Register</a></p>
+		<p><a href="/login" class="ui-btn ui-shadow ui-corner-all">Login</a></p>
 		<p><a href="#about" class="ui-btn ui-shadow ui-corner-all">About</a></p>
 		<p><a href="#faq" class="ui-btn ui-shadow ui-corner-all">FAQ</a></p>
 		<p><a href="#contact" class="ui-btn ui-shadow ui-corner-all">Contact Us</a></p>
@@ -133,62 +133,6 @@
 		<h4>Developed By Mark Aigbe and Josh Capellan</h4>
 	</div><!-- /footer -->
 </div><!-- /page one -->
-
-
-<!----------------------------------------------------------------------------------------------------------------------------->
-<!-- REGISTER -->
-<div data-role="page" id="two" data-theme="a">
-
-	<div data-role="header">
-		<h1>Register</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<h2>Register</h2>
-
-		<label for="regUsername">Username:</label><input type="text" id="regUsername" name="regUsername" class="text-basic" value="">
-
-		<label for="regPassword">Password:</label><input type="password" id="regPassword" name="regPassword" class="text-basic" value="">
-
-		<button id="register" class="ui-btn">Sign Up</button>
-
-		<!-- <p>Already registered? login <a href="#three">here</a></p> -->
-		<p>Already registered? login <a href="#Three">here</a></p>
-
-		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page two -->
-
-
-<!----------------------------------------------------------------------------------------------------------------------------->
-<!-- LOGIN -->
-<div data-role="page" id="Three" data-theme="a">
-
-	<div data-role="header">
-		<h1>Login</h1>
-	</div><!-- /header -->
-
-	<div role="main" class="ui-content">
-		<h2>Login</h2>
-
-		<label for="username">Username:</label><input type="text" name="username" id="username" class="text-basic" value="">
-		<label for="password">Password</label><input type="password" name="password" id="password" class="text-basic" value="">
-
-		<button id = "login" class="ui-btn">Login</button>
-
-		<p>Havent registered? register <a href="#two">here</a></p>
-
-		<p><a href="#one" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page three -->
 
 
 <!----------------------------------------------------------------------------------------------------------------------------->
@@ -378,7 +322,7 @@
 		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Create a team</a></p>
 		<p><a href="#five" class="ui-btn ui-shadow ui-corner-all">View League Tables</a></p>
 		<p><a href="#playersStat" class="ui-btn ui-shadow ui-corner-all">View Top 25 Players Stats</a></p>
-		<p><a href="#forum" class="ui-btn ui-shadow ui-corner-all">Enter Discussion Forums</a></p>
+		<p><a href="/forum" class="ui-btn ui-shadow ui-corner-all">Enter Discussion Forums</a></p>
 
 
 
@@ -504,31 +448,6 @@
 	</div><!-- /footer -->
 </div><!-- /page nine -->
 
-
-<!-- FORUM Page-->
-<div data-role="page" id="forum" data-theme="a">
-	<div data-role="header">
-		<h1>forum</h1>
-	</div><!-- /header -->
-
-
-	<div role="main" class="ui-content">
-		<div id="chatBox">
-			<h2>Forum</h2>
-			<div id="output"></div>
-		</div>
-		<input id="handle" type="text" placeholder="Handle"/>
-		<input id="message" type="text" placeholder="Message"/>
-		<button id="send">Send Messag</button>
-	</div><!-- /content -->
-
-	<div data-role="footer">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page nine -->
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
-<script src="/socket.io/socket.io.js"></script>
 <script src="../scripts/chat.js"></script>
 <script src="../scripts/tables.js"></script>
 <script src="../scripts/players.js"></script>

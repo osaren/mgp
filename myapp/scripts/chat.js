@@ -1,13 +1,14 @@
 // make connection
-var socket = io.connect('http://localhost:3000/#test');
+var socket = io.connect('http://localhost:3000');
 
-// query dom
+// vars to use the id's we need
 var message = document.getElementById('message');
 var handle = document.getElementById('handle');
 var button = document.getElementById('send');
 var output = document.getElementById('output');
+var progress = document.getElementById('progress');
 
-// emit events
+// click event
 if(button){
 	button.addEventListener('click', function(){
 		socket.emit('chat', {
@@ -18,10 +19,26 @@ if(button){
 	});
 }
 else{
-	console.log('somethings wrong with event listener');
+	console.log('somethings wrong with button event listener');
 }
 
-// Listen for event
+// typing event
+if(message){
+	message.addEventListener('keypress', function(){
+		socket.emit('typing', handle.value);
+	});	
+}
+else{
+	console.log('somethings wrong with typing event listener');
+}
+
+
+// push content to client once events are activated
 socket.on('chat', function(data){
+	progress.innerHTML="";
 	output.innerHTML += '<p><strong>' + data.handle + ': </strong>' + data.message + '</p>';
+});
+
+socket.on('typing', function(data){
+    progress.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });

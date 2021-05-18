@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" lang="">
+<head>
+	<title>mgp</title>
+	<link rel="stylesheet" href="stylesheets/themes/RED.min.css" />
+	<link rel="stylesheet" href="stylesheets/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+    <div data-role="header">
+        <h1>forum</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <div id="chatBox">
+            <h2>Forum</h2>
+            <div id="output"></div>
+            <div id="progress"></div>
+        </div>
+        <input id="handle" type="text" placeholder="Handle"/>
+        <input id="message" type="text" placeholder="Message"/>
+        <button id="send">Send Messag</button>
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+    
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="../scripts/chat.js"></script>
+</body>
+</html>

@@ -3,15 +3,17 @@ const socketapi = {
     io: io
 };
 
-// Add your socket.io logic here!
 io.on( "connection", function( socket ) {
     console.log( "Made WebSocket Connection - ID: " , socket.id);
 
-    // welcome current user
+    // 2 socket functions that are linked from server to all clients(users)
     socket.on('chat',function(data){
         io.emit('chat', data);
     });
+
+    socket.on('typing', function(data){
+        socket.broadcast.emit('typing', data);
+    });
 });
-// end of socket.io logic
 
 module.exports = socketapi;

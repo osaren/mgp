@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html" lang="">
+<head>
+	<title>mgp</title>
+	<link rel="stylesheet" href="stylesheets/themes/RED.min.css" />
+	<link rel="stylesheet" href="stylesheets/themes/jquery.mobile.icons.min.css" />
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+	<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+    <!----------------------------------------------------------------------------------------------------------------------------->
+    <!-- REGISTER -->
+
+    <div data-role="header">
+        <h1>Register</h1>
+    </div><!-- /header -->
+
+    <div role="main" class="ui-content">
+        <h2>Register</h2>
+
+        <label for="regUsername">Username:</label><input type="text" id="regUsername" name="regUsername" class="text-basic" value="">
+
+        <label for="regPassword">Password:</label><input type="password" id="regPassword" name="regPassword" class="text-basic" value="">
+
+        <button id="register" class="ui-btn">Sign Up</button>
+
+        <!-- <p>Already registered? login <a href="#three">here</a></p> -->
+        <p>Already registered? login <a href="/login">here</a></p>
+
+        <p><a href="/" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Back to homepage</a></p>
+    </div><!-- /content -->
+
+    <div data-role="footer">
+        <h4>Page Footer</h4>
+    </div><!-- /footer -->
+    <script src="../scripts/userHandler.js"></script>
+</body>
+</html>
