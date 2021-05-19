@@ -1,4 +1,5 @@
 // make connection
+//var io = require('socket.io')();
 var socket = io.connect('http://localhost:3000');
 
 // vars to use the id's we need

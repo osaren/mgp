@@ -26,6 +26,41 @@ app.use('/forum', forumRouter);
 app.use( express.static( "public" ) );
 app.use('/scripts', express.static(__dirname + '/scripts/'));
 
+app.post('/forumIndex',function(req,res){
+        // pulling in mysql
+        const mysql = require('mysql');
+        // set up a connection
+        const con = mysql.createConnection({
+            host: "localhost",
+            user: "root",
+            port : 3309,
+            database: "mgp",
+            password: ""
+        });
+    
+        let output = ''; // this is where all the output goes that will be sent back at the end
+    
+        // Get information for the first players in playergroup a
+        con.connect(function(err) {
+            if (err) throw err;
+            const sql = "SELECT * FROM forum";
+            console.log(sql);
+            con.query(sql, function (err, result) {
+                if (err) throw err;
+                //console.log(result);
+    
+                output = output + '<select>';
+                for(let i=0; i<result.length;i++){
+    
+                    output = output + ' <option>'+result[i].player+' </option>';
+                }
+                output = output + '</select>';
+    
+                res.send(output);
+            });
+        });
+});
+
 app.post('/teams',function(req,res){
     //get the values of each position in the team
 

@@ -322,7 +322,7 @@
 		<p><a href="#four" class="ui-btn ui-shadow ui-corner-all">Create a team</a></p>
 		<p><a href="#five" class="ui-btn ui-shadow ui-corner-all">View League Tables</a></p>
 		<p><a href="#playersStat" class="ui-btn ui-shadow ui-corner-all">View Top 25 Players Stats</a></p>
-		<p><a href="/forum" class="ui-btn ui-shadow ui-corner-all">Enter Discussion Forums</a></p>
+		<p><a href="#forumIndex" class="ui-btn ui-shadow ui-corner-all">Enter Discussion Forums</a></p>
 
 
 
@@ -448,6 +448,41 @@
 	</div><!-- /footer -->
 </div><!-- /page nine -->
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="../scripts/chat.js"></script>
+</div>
+
+<div data-role="page" id="forumIndex" data-theme="a">
+
+	<div data-role="header">
+		<h1>Forums</h1>
+	</div><!-- /header -->
+
+
+	<div role="main" class="ui-content">
+		<h2>Select room to join</h2>
+
+		<label for="room">Room</label>
+		<select name="room" id="room">
+			<option id="pl">Premier League</option>
+			<option id="la_liga">La Liga</option>
+			<option id="serie_a">Serie A</option>
+		</select>
+
+		<button id="enter_room" class="ui-btn">Enter Room</button>
+
+	<p><a href="#customer" data-direction="reverse" class="ui-btn ui-shadow ui-corner-all ui-btn-b">Go Back</a></p>
+
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+</div><!-- /page nine -->
+
+<script src="../scripts/forumRoom.js"></script>
 <script src="../scripts/chat.js"></script>
 <script src="../scripts/tables.js"></script>
 <script src="../scripts/players.js"></script>
