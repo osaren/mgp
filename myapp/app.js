@@ -115,23 +115,17 @@ app.post('/getData_admin',function(req,res){
 
     connection.connect()
 
-    connection.query('SELECT * FROM premier_league, serie_a, la_liga WHERE premier_league.pos = serie_a.pos AND premier_league.pos = la_liga.pos', function (err, rows) {
+    connection.query('SELECT * FROM users', function (err, rows) {
         if (err) throw err
         let output = '';
         for(let i=0; i< rows.length; i++){
 
-            const pos = rows[i].Pos + ' ';
-            const team = rows[i].Team + ' ';
-            const pl = rows[i].Pl + ' ';
-            const won = rows[i].W + ' ';
-            const draw = rows[i].D + ' ';
-            const loss = rows[i].L + ' ';
-            const f = rows[i].F + ' ';
-            const against = rows[i].A + ' ';
-            const gd = rows[i].GD + ' ';
-            const points = rows[i].Pts + '<br>';
+            const id = rows[i].id + ' ';
+            const username = rows[i].username + ' ';
+            const password = rows[i].password + ' ';
+            const acctype = rows[i].acctype + '<br>';
 
-            output = output + pos + team + pl + won + draw + loss + f + against + gd + points;
+            output = output + id + username + password + acctype;
             console.log(output)
         }
 
