@@ -9,36 +9,65 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/',function(req,res){
+
   //get the username
-  const regUsername=req.body.username;
+  var regUsername=req.body.username;
 
   // get the password
-  const regPass = req.body.password;
+  var regPass = req.body.password;
 
-  console.log("User name = "+ regUsername + " Password: " + regPass);
-
-  // connect to the db
-  const mysql = require('mysql')
-  const connection = mysql.createConnection({
+	console.log("User name = "+ regUsername + " Password: " + regPass);
+ 
+	// connect to the db
+    var mysql = require('mysql')
+    var connection = mysql.createConnection({
       host     : 'localhost',
       user     : 'root',
       password : '',
       port : 3309,
       database : 'mgp'
+ 
+    });
+ 
+ 
+ 
+	connection.connect()
+	var sql = "SELECT * from users WHERE username = '"+regUsername+"'";
+    console.log(sql);
+    connection.query(sql, function (err, rows, fields) {
+		// ensuring to throw something wheter there's an error or not
+		if(err) throw err;
+		console.log("Connected to DB!");
+        var exists = true;
+		for(var i=0; i< rows.length; i++){
+			console.log('Acc type: ', rows[i].acctype)
+            exists = false;
+ 
+		}
+        console.log(exists);
+ 
+        if(exists){
 
-  });
-
-  connection.connect()
-  const sql = "INSERT INTO `mgp`.`users` (`username`, `password`, `acctype`) VALUES ('"+regUsername+"', '"+regPass+"', 'customer')";
-  connection.query(sql, function (err){
-      // ensuring to throw something whether there's an error or not
-      if(err) throw err;
-
-      // confirms if working
-      console.log("Inserted new user!");
-  });
-
-  res.send("Hello there = " + regUsername + " Password: " + regPass);
+          console.log("does not exist");
+          var sql = "INSERT INTO `mgp`.`users` (`username`, `password`, `acctype`) VALUES ( '"+regUsername+"', '"+regPass+"', 'customer')";
+          connection.query(sql, function (err, rows, fields){
+              
+            // ensuring to throw something wheter there's an error or not
+            if(err) throw err;
+    
+            // confirms if working
+            console.log("Inserted new user!");
+            res.send("Hello there = " + regUsername + " Password: " + regPass);
+            
+          });
+           
+        } 
+			else {
+				
+				res.send("User already exists");
+				console.log("exists");
+        }
+	});
 });
 
 module.exports = router;

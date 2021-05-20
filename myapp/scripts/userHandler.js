@@ -10,12 +10,16 @@
         $.post( "/register", { username: un, password: pw})
                 .done(function( data ) {
                     alert( "Data Loaded: " + data );
-
-                    // redirect to the customer page.
-                    window.location="/#customer";
-
-                });
+     
+                    if(data.includes("exists")){
+                       window.location="/register";
+                    } else {
+                       // redirect to the user page.
+                       window.location="/#customer";
+                   } 
+               });
     });
+
 
     $("#login").click(function() {
         console.log("clicked");
