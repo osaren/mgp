@@ -26,6 +26,7 @@ app.use('/forum', forumRouter);
 app.use( express.static( "public" ) );
 app.use('/scripts', express.static(__dirname + '/scripts/'));
 
+
 app.post('/forumIndex',function(req,res){
         // pulling in mysql
         const mysql = require('mysql');

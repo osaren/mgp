@@ -43,3 +43,8 @@ socket.on('chat', function(data){
 socket.on('typing', function(data){
     progress.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';
 });
+
+$("#forum").click(function() {
+	console.log("clicked");
+	window.location="/#forumIndex";
+});
